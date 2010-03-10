@@ -39,7 +39,7 @@ String extend [
 	stop := index + anInteger + aString size - 1 min: self size.
 	^(start > 1 ifTrue: [ anEllipsisString ] ifFalse: [ '' ]) ,
 		(self copyFrom: start to: stop) ,
-	  	(stop < self size ifTrue: [ anEllipsisString ] ifFalse: [ '' ])
+		(stop < self size ifTrue: [ anEllipsisString ] ifFalse: [ '' ])
     ]
 
     greaseInteger [
@@ -164,6 +164,18 @@ Integer extend [
     greaseInteger [
 	<category: '*Grease-Core'>
 	^ self
+    ]
+
+    pluralize: aSingularString [
+	<category: '*Grease-Core'>
+	^ self 
+	    pluralize: aSingularString
+	    with: (GRInflector pluralize: aSingularString)
+    ]
+
+    pluralize: aSingularString with: aPluralString [
+	<category: '*Grease-Core'>
+	^ self printString , ' ' , (self abs = 1 ifTrue: [ aSingularString ] ifFalse: [ aPluralString ])
     ]
 ]
 
