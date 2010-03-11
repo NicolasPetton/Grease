@@ -2,6 +2,58 @@
   <name>Grease</name>
   <url>git://github.com/NicolasPetton/Grease.git</url>
   <namespace>Grease</namespace>
+  <prereq>Iconv</prereq>
+  <prereq>SUnit</prereq>
+  <test>
+    <filein>Tests/Core/GRAbstractDictionaryTest.st</filein>
+    <filein>Tests/Core/GRNotificationStub.st</filein>
+    <filein>Tests/Core/GRDurationTest.st</filein>
+    <filein>Tests/Core/GRSetTest.st</filein>
+    <filein>Tests/Core/GRIntervalTest.st</filein>
+    <filein>Tests/Core/GRArrayTest.st</filein>
+    <filein>Tests/Core/GRExceptionTest.st</filein>
+    <filein>Tests/Core/GRDictionaryTest.st</filein>
+    <filein>Tests/Core/GRErrorStub.st</filein>
+    <filein>Tests/Core/GRDelayedSendTest.st</filein>
+    <filein>Tests/Core/GRCollectionTest.st</filein>
+    <filein>Tests/Core/GRIdentityDictionaryTest.st</filein>
+    <filein>Tests/Core/GROrderedCollectionTest.st</filein>
+    <filein>Tests/Core/GRBagTest.st</filein>
+    <filein>Tests/Core/GRCodecTest.st</filein>
+    <filein>Tests/Core/GRStringTest.st</filein>
+    <file>Tests/Core/GRAbstractDictionaryTest.st</file>
+    <file>Tests/Core/GRNotificationStub.st</file>
+    <file>Tests/Core/GRDurationTest.st</file>
+    <file>Tests/Core/GRSetTest.st</file>
+    <file>Tests/Core/GRIntervalTest.st</file>
+    <file>Tests/Core/GRArrayTest.st</file>
+    <file>Tests/Core/GRExceptionTest.st</file>
+    <file>Tests/Core/GRDictionaryTest.st</file>
+    <file>Tests/Core/GRErrorStub.st</file>
+    <file>Tests/Core/GRDelayedSendTest.st</file>
+    <file>Tests/Core/GRCollectionTest.st</file>
+    <file>Tests/Core/GRIdentityDictionaryTest.st</file>
+    <file>Tests/Core/GROrderedCollectionTest.st</file>
+    <file>Tests/Core/GRBagTest.st</file>
+    <file>Tests/Core/GRCodecTest.st</file>
+    <file>Tests/Core/GRStringTest.st</file>
+    <sunit>
+      Grease.GRAbstractDictionaryTest
+      Grease.GRDurationTest
+      Grease.GRSetTest
+      Grease.GRIntervalTest
+      Grease.GRArrayTest
+      Grease.GRExceptionTest
+      Grease.GRDictionaryTest
+      Grease.GRDelayedSendTest
+      Grease.GRCollectionTest
+      Grease.GRIdentityDictionaryTest
+      Grease.GROrderedCollectionTest
+      Grease.GRBagTest
+      Grease.GRCodecTest
+      Grease.GRStringTest
+    </sunit>
+  </test>
   <filein>Core/GRObject.st</filein>
   <filein>Core/GRPlatform.st</filein>
   <filein>Core/GRPackage.st</filein>
@@ -30,6 +82,22 @@
   <filein>Core/Utilities/GRBoundDelayedSend.st</filein>
   <filein>Core/Utilities/GRUnboundDelayedSend.st</filein>
   <filein>Core/Utilities/GRInvalidArgumentCount.st</filein>
+  <filein>Tests/Core/GRCodecTest.st</filein>
+  <filein>Tests/Core/GRCollectionTest.st</filein>
+  <filein>Tests/Core/GRAbstractDictionaryTest.st</filein>
+  <filein>Tests/Core/GRDictionaryTest.st</filein>
+  <filein>Tests/Core/GRIdentityDictionaryTest.st</filein>
+  <filein>Tests/Core/GRArrayTest.st</filein>
+  <filein>Tests/Core/GRBagTest.st</filein>
+  <filein>Tests/Core/GRIntervalTest.st</filein>
+  <filein>Tests/Core/GROrderedCollectionTest.st</filein>
+  <filein>Tests/Core/GRSetTest.st</filein>
+  <filein>Tests/Core/GRStringTest.st</filein>
+  <filein>Tests/Core/GRDelayedSendTest.st</filein>
+  <filein>Tests/Core/GRDurationTest.st</filein>
+  <filein>Tests/Core/GRErrorStub.st</filein>
+  <filein>Tests/Core/GRExceptionTest.st</filein>
+  <filein>Tests/Core/GRNotificationStub.st</filein>
   <file>Core/GRObject.st</file>
   <file>Core/GRPlatform.st</file>
   <file>Core/GRPackage.st</file>
@@ -58,4 +126,20 @@
   <file>Core/Utilities/GRBoundDelayedSend.st</file>
   <file>Core/Utilities/GRUnboundDelayedSend.st</file>
   <file>Core/Utilities/GRInvalidArgumentCount.st</file>
+  <file>Tests/Core/GRCodecTest.st</file>
+  <file>Tests/Core/GRCollectionTest.st</file>
+  <file>Tests/Core/GRAbstractDictionaryTest.st</file>
+  <file>Tests/Core/GRDictionaryTest.st</file>
+  <file>Tests/Core/GRIdentityDictionaryTest.st</file>
+  <file>Tests/Core/GRArrayTest.st</file>
+  <file>Tests/Core/GRBagTest.st</file>
+  <file>Tests/Core/GRIntervalTest.st</file>
+  <file>Tests/Core/GROrderedCollectionTest.st</file>
+  <file>Tests/Core/GRSetTest.st</file>
+  <file>Tests/Core/GRStringTest.st</file>
+  <file>Tests/Core/GRDelayedSendTest.st</file>
+  <file>Tests/Core/GRDurationTest.st</file>
+  <file>Tests/Core/GRErrorStub.st</file>
+  <file>Tests/Core/GRExceptionTest.st</file>
+  <file>Tests/Core/GRNotificationStub.st</file>
 </package>

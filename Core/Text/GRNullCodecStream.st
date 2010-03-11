@@ -23,7 +23,7 @@ GRCodecStream subclass: GRNullCodecStream [
 	<category: 'streaming'>
 	aCharacterOrByte isCharacter 
 	    ifTrue: [stream nextPut: aCharacterOrByte]
-	    ifFalse: [stream nextPut: (Character codePoint: aCharacterOrByte)]
+	    ifFalse: [stream nextPut: (Character value: aCharacterOrByte)]
     ]
 
     nextPutAll: aStringOrByteArray [
@@ -32,6 +32,6 @@ GRCodecStream subclass: GRNullCodecStream [
 	    ifTrue: [stream nextPutAll: aStringOrByteArray]
 	    ifFalse: [1 
 		to: aStringOrByteArray size
-		do: [:index | stream nextPut: (Character codePoint: (aStringOrByteArray at: index))]]
+		do: [:index | stream nextPut: (Character value: (aStringOrByteArray at: index))]]
     ]
 ]

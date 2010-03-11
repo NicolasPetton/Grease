@@ -116,7 +116,7 @@ TestCase subclass: GRCodecTest [
 	^String streamContents: 
 		[:stream | 
 		aCollectionOfIntegers 
-		    do: [:each | stream nextPut: (Character codePoint: each)]]
+		    do: [:each | stream nextPut: (Character value: each)]]
     ]
 
     seasideByteArray [

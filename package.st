@@ -1,0 +1,62 @@
+Eval [
+  PackageBuilder new
+    name: 'Grease';
+    namespace: 'Grease';
+    prereq: 'Iconv';
+    prereq: 'SUnit';
+
+    testsBelow: 'Tests' matching: '*.st';
+
+    url: 'git://github.com/NicolasPetton/Grease.git';
+
+    filein: 'Core/GRObject.st';
+    filein: 'Core/GRPlatform.st';
+    filein: 'Core/GRPackage.st';
+    filein: 'Core/GRVersion.st';
+    filein: 'Core/Exceptions.st';
+    filein: 'Core/Extensions.st';
+
+    filein: 'Core/Collections/GRSmallDictionary.st';
+    filein: 'Core/Collections/GROrderedMultiMap.st';
+
+    filein: 'Core/Text/GRCodec.st';
+    filein: 'Core/Text/GRNullCodec.st';
+    filein: 'Core/Text/GRCodecStream.st';
+    filein: 'Core/Text/GRNullCodecStream.st';
+    filein: 'Core/Text/GRInflector.st';
+    filein: 'Core/Text/GRInvalidUtf8Error.st';
+    filein: 'Core/Text/GRPrinter.st';
+    filein: 'Core/Text/GRMappedPrinter.st';
+    filein: 'Core/Text/GRNumberPrinter.st';
+    filein: 'Core/Text/GROrdinalizePrinter.st';
+    filein: 'Core/Text/GRPluggablePrinter.st';
+    filein: 'Core/Text/GRSequentialPrinter.st';
+    filein: 'Core/Text/GRSignPrinter.st';
+    filein: 'Core/Text/GRStringPrinter.st';
+    filein: 'Core/Text/GRUnitPrinter.st';
+    filein: 'Core/Text/GRUnsupportedEncodingError.st';
+
+    filein: 'Core/Utilities/GRDelayedSend.st';
+    filein: 'Core/Utilities/GRBoundDelayedSend.st';
+    filein: 'Core/Utilities/GRUnboundDelayedSend.st';
+    filein: 'Core/Utilities/GRInvalidArgumentCount.st';
+
+    filein: 'Tests/Core/GRCodecTest.st';
+    filein: 'Tests/Core/GRCollectionTest.st';
+    filein: 'Tests/Core/GRAbstractDictionaryTest.st';
+    filein: 'Tests/Core/GRDictionaryTest.st';
+    filein: 'Tests/Core/GRIdentityDictionaryTest.st';
+    filein: 'Tests/Core/GRArrayTest.st';
+    filein: 'Tests/Core/GRBagTest.st';
+    filein: 'Tests/Core/GRIntervalTest.st';
+    filein: 'Tests/Core/GROrderedCollectionTest.st';
+    filein: 'Tests/Core/GRSetTest.st';
+    filein: 'Tests/Core/GRStringTest.st';
+    filein: 'Tests/Core/GRDelayedSendTest.st';
+    filein: 'Tests/Core/GRDurationTest.st';
+    filein: 'Tests/Core/GRErrorStub.st';
+    filein: 'Tests/Core/GRExceptionTest.st';
+    filein: 'Tests/Core/GRNotificationStub.st';
+
+    buildXml
+]

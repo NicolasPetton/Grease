@@ -6,9 +6,19 @@ Object extend [
 	    details: detailsString;
 	    signal: apiString
     ]
+
+    isCollection [
+	<category: '*Grease-Core'>
+	^false
+    ]
 ]
 
 String extend [
+
+    beginsWith: aString [
+	<category: '*Grease-GST-Core'>
+	^self startsWith: aString
+    ]
 
     excerpt: aString [
 	<category: '*Grease-Core'>
@@ -157,6 +167,36 @@ Number extend [
 	"Answer an integer of the receiver, in our case we simply truncate the number."
 	^ self truncated
     ]
+
+    weeks [
+	<category: '*Grease-GST-Core'>
+	^Duration weeks: self
+    ]
+
+    days [
+	<category: '*Grease-GST-Core'>
+	^Duration days: self
+    ]
+
+    hours [
+	<category: '*Grease-GST-Core'>
+	^Duration hours: self
+    ]
+
+    minutes [
+	<category: '*Grease-GST-Core'>
+	^Duration minutes: self
+    ]
+
+    seconds [
+	<category: '*Grease-GST-Core'>
+	^Duration seconds: self
+    ]
+
+    milliseconds [
+	<category: '*Grease-GST-Core'>
+	^Duration milliseconds: self
+    ]
 ]
 
 Integer extend [
@@ -176,6 +216,37 @@ Integer extend [
     pluralize: aSingularString with: aPluralString [
 	<category: '*Grease-Core'>
 	^ self printString , ' ' , (self abs = 1 ifTrue: [ aSingularString ] ifFalse: [ aPluralString ])
+    ]
+]
+
+Collection extend [
+
+    any [
+	<category: '*Grease-GST-Core'>
+	^self anyOne
+    ]
+
+    sorted [
+	<category: '*Grease-GST-Core'>
+	^self asArray sort
+    ]
+
+    sorted: aBlock [
+	<category: '*Grease-GST-Core'>
+	^self asArray sort: aBlock
+    ]
+
+    isCollection [
+	<category: '*Grease-GST-Core'>
+	^true
+    ]
+]
+
+Duration extend [
+    
+    milliseconds [
+	<category: '*Grease-GST-Core'>
+	^0
     ]
 ]
 
