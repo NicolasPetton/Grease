@@ -57,6 +57,16 @@ Eval [
     filein: 'Tests/Core/GRErrorStub.st';
     filein: 'Tests/Core/GRExceptionTest.st';
     filein: 'Tests/Core/GRNotificationStub.st';
+    filein: 'Tests/Core/GRNullCodecStreamTest.st';
+    filein: 'Tests/Core/GRNumberTest.st';
+    filein: 'Tests/Core/GRObjectStub.st';
+    filein: 'Tests/Core/GRObjectTest.st';
+    filein: 'Tests/Core/GRPackageTest.st';
+    filein: 'Tests/Core/GRPlatformTest.st';
+    filein: 'Tests/Core/GRPrinterTest.st';
+    filein: 'Tests/Core/GROrderedMultiMapTest.st';
+    filein: 'Tests/Core/GRUtf8CodecTest.st';
+    filein: 'Tests/Core/GRVersionTest.st';
 
     buildXml
 ]
