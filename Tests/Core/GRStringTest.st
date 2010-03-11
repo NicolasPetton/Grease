@@ -43,7 +43,7 @@ GRCollectionTest subclass: GRStringTest [
 	^true
     ]
 
-    isSeqenced [
+    isSequenced [
 	<category: 'testing-ansi'>
 	^true
     ]

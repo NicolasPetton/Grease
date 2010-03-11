@@ -13,11 +13,38 @@ Object extend [
     ]
 ]
 
+Symbol extend [
+
+    capitalized [
+	<category: '*Grease-GST-Core'>
+	^self asString capitalized asSymbol
+    ]
+]
+
 String extend [
 
     beginsWith: aString [
 	<category: '*Grease-GST-Core'>
 	^self startsWith: aString
+    ]
+
+    sort [
+	<category: '*Grease-GST-Core'>
+	^self asArray sort asString
+    ]
+
+    sort: aBlock [
+	<category: '*Grease-GST-Core'>
+	^(self asArray sort: aBlock) asString
+    ]
+
+    capitalized [
+	<category: '*Grease-GST-Core'>
+	| cap |
+	self isEmpty ifTrue: [^self].
+	cap := self copy.
+	cap at: 1 put: (self at: 1) asUppercase.
+	^cap
     ]
 
     excerpt: aString [
@@ -43,7 +70,7 @@ String extend [
 	If aString isn't found, nil is answered."
 
 	| index start stop |
-	(index := self indexOfSubCollection: aString) = 0
+	(aString isEmpty or: [ (index := self indexOfSubCollection: aString) = 0 ])
 	    ifTrue: [ ^ nil ].
 	start := index - anInteger max: 1.
 	stop := index + anInteger + aString size - 1 min: self size.
