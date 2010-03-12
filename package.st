@@ -41,6 +41,13 @@ Eval [
     filein: 'Core/Utilities/GRUnboundDelayedSend.st';
     filein: 'Core/Utilities/GRInvalidArgumentCount.st';
 
+    filein: 'Gst/Core/GRGstConverterCodecStream.st';
+    filein: 'Gst/Core/GRGstUtf8CodecStream.st';
+    filein: 'Gst/Core/GRGstGenericCodec.st';
+    filein: 'Gst/Core/GRGstPlateform.st';
+    filein: 'Gst/Core/GRGstRandomProvider.st';
+    filein: 'Gst/Core/GRGstUtf8Codec.st';
+
     filein: 'Tests/Core/GRCodecTest.st';
     filein: 'Tests/Core/GRCollectionTest.st';
     filein: 'Tests/Core/GRAbstractDictionaryTest.st';

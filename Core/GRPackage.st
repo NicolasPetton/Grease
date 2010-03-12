@@ -6,9 +6,9 @@ GRObject subclass: GRPackage [
 
 
     GRPackage class >> greasePharoCore [
-	<category: '*grease-pharo-core'>
+	<category: '*grease-gst-core'>
 	^(self new)
-	    name: 'Grease-Pharo-Core';
+	    name: 'Grease-Gst-Core';
 	    addDependency: 'Grease-Core';
 	    url: #seasideUrl;
 	    yourself

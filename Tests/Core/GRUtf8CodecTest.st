@@ -88,7 +88,7 @@ TestCase subclass: GRUtf8CodecTest [
     ]
 
     expectedFailures [
-	<category: '*grease-tests-pharo-core'>
+	<category: '*grease-tests-gst-core'>
 	^#(#testCodecUtf8ShortestForm)
     ]
 ]
