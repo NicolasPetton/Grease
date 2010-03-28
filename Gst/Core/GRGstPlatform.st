@@ -3,7 +3,7 @@ GRPlatform subclass: GRGstPlatform [
     <comment: 'A WASqueakPlatform is the Squeak implementation of 
     SeasidePlatformSupport, the Seaside class that provides functionality 
     that can not be implemented in a platform independent way.'>
-    <category: 'Grease-Pharo-Core'>
+    <category: 'Grease-Gst-Core'>
 
     GRGstPlatform class >> initialize [
 	<category: 'class initialization'>
@@ -255,7 +255,7 @@ GRPlatform subclass: GRGstPlatform [
 	 Used by Squeak to use a secure random when avaiable."
 
 	<category: 'factory'>
-	^GRPharoRandomProvider
+	^GRGstRandomProvider
     ]
 
     readWriteByteStream [

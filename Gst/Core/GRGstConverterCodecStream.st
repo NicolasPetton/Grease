@@ -9,7 +9,7 @@ GRCodecStream subclass: GRGstConverterCodecStream [
 	converter - the TextConverter used to do the encoding conversion'>
     <category: 'Grease-Pharo-Core'>
 
-    GRPGstConverterCodecStream class >> on: aStream converter: aConverter [
+    GRGstConverterCodecStream class >> on: aStream converter: aConverter [
 	<category: 'instance creation'>
 	^self basicNew initalizeOn: aStream converter: aConverter
     ]

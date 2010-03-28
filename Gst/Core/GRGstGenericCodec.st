@@ -2,7 +2,7 @@ GRCodec subclass: GRGstGenericCodec [
     | name urlCodec |
     
     <comment: nil>
-    <category: 'Grease-Pharo-Core'>
+    <category: 'Grease-Gst-Core'>
 
     GRGstGenericCodec class >> additionalLatin1CodecNames [
 	<category: 'private'>
@@ -39,7 +39,7 @@ GRCodec subclass: GRGstGenericCodec [
 	    collect: [:each | self basicForEncoding: each greaseString]
     ]
 
-    GRPharoGenericCodec class >> supportsEncoding: aString [
+    GRGstGenericCodec class >> supportsEncoding: aString [
 	"Answer whether the the given encoding name is supported."
 
 	<category: 'testing'>
@@ -60,7 +60,7 @@ GRCodec subclass: GRGstGenericCodec [
 
     encoderFor: aStream [
 	<category: 'conversion'>
-	^GRPharoConverterCodecStream on: aStream converter: self converter
+	^GRGstConverterCodecStream on: aStream converter: self converter
     ]
 
     initializeWithName: aString [

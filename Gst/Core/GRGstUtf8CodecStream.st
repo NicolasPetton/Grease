@@ -2,12 +2,12 @@ GRGstConverterCodecStream subclass: GRGstUtf8CodecStream [
     
     <comment: 'A WAUtf8CodecStream is a WACodecStream optimized for UTF-8 
     performance in the case where most of the characters are ASCII'>
-    <category: 'Grease-Pharo-Core'>
+    <category: 'Grease-Gst-Core'>
 
     Latin1ToUtf8Encodings := nil.
     Latin1ToUtf8Map := nil.
 
-    GRPharoUtf8CodecStream class >> initialize [
+    GRGstUtf8CodecStream class >> initialize [
 	<category: 'class initialization'>
 	(Smalltalk hasClassNamed: #UTF8TextConverter) 
 	    ifFalse: 
