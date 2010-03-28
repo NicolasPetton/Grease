@@ -1,27 +1,27 @@
-GRCodec subclass: GRGstGenericCodec [
+GRCodec subclass: GRGSTGenericCodec [
     | name urlCodec |
     
     <comment: nil>
-    <category: 'Grease-Gst-Core'>
+    <category: 'Grease-GST-Core'>
 
-    GRGstGenericCodec class >> additionalLatin1CodecNames [
+    GRGSTGenericCodec class >> additionalLatin1CodecNames [
 	<category: 'private'>
 	^#('iso-8859-1' 'ISO-8859-1')
     ]
 
-    GRGstGenericCodec class >> basicForEncoding: aString [
+    GRGSTGenericCodec class >> basicForEncoding: aString [
 	<category: 'private'>
 	(self supportsEncoding: aString) 
 	    ifFalse: [self unsupportedEncoding: aString].
 	^self basicNew initializeWithName: aString
     ]
 
-    GRGstGenericCodec class >> latin1CodecNames [
+    GRGSTGenericCodec class >> latin1CodecNames [
 	<category: 'private'>
 	^Latin1TextConverter encodingNames , self additionalLatin1CodecNames
     ]
 
-    GRGstGenericCodec class >> supportedEncodingNames [
+    GRGSTGenericCodec class >> supportedEncodingNames [
 	"answers the names of the encodings supported by this class"
 
 	<category: 'private'>
@@ -31,7 +31,7 @@ GRCodec subclass: GRGstGenericCodec [
 	    yourself
     ]
 
-    GRGstGenericCodec class >> codecs [
+    GRGSTGenericCodec class >> codecs [
 	<category: 'accessing'>
 	^(TextConverter allEncodingNames select: [:each | 
 		"exclude UFT-8 which is handeled by WAUtf8Codec"
@@ -39,7 +39,7 @@ GRCodec subclass: GRGstGenericCodec [
 	    collect: [:each | self basicForEncoding: each greaseString]
     ]
 
-    GRGstGenericCodec class >> supportsEncoding: aString [
+    GRGSTGenericCodec class >> supportsEncoding: aString [
 	"Answer whether the the given encoding name is supported."
 
 	<category: 'testing'>

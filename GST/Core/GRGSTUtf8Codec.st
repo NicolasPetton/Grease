@@ -1,19 +1,19 @@
-GRCodec subclass: GRGstUtf8Codec [
+GRCodec subclass: GRGSTUtf8Codec [
     
     <comment: 'A WAUtf8Codec is a WACodec optimized for UTF-8.'>
     <category: 'Grease-Gst-Core'>
 
-    GRGstUtf8Codec class >> basicForEncoding: aString [
+    GRGSTUtf8Codec class >> basicForEncoding: aString [
 	<category: 'private'>
 	^self new
     ]
 
-    GRGstUtf8Codec class >> codecs [
+    GRGSTUtf8Codec class >> codecs [
 	<category: 'accessing'>
 	^Array with: self new
     ]
 
-    GRGstUtf8Codec class >> supportsEncoding: aString [
+    GRGSTUtf8Codec class >> supportsEncoding: aString [
 	<category: 'testing'>
 	^(#('utf-8' 'UTF-8') includes: aString) 
 	    or: [UTF8TextConverter encodingNames includes: aString]
@@ -31,12 +31,12 @@ GRCodec subclass: GRGstUtf8Codec [
 
     decoderFor: aStream [
 	<category: 'conversion'>
-	^GRGstUtf8CodecStream on: aStream converter: UTF8TextConverter new
+	^GRGSTUtf8CodecStream on: aStream converter: UTF8TextConverter new
     ]
 
     encoderFor: aStream [
 	<category: 'conversion'>
-	^GRGstUtf8CodecStream on: aStream converter: UTF8TextConverter new
+	^GRGSTUtf8CodecStream on: aStream converter: UTF8TextConverter new
     ]
 
     name [

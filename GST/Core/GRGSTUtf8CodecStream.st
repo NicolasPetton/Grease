@@ -1,4 +1,4 @@
-GRGstConverterCodecStream subclass: GRGstUtf8CodecStream [
+GRGSTConverterCodecStream subclass: GRGSTUtf8CodecStream [
     
     <comment: 'A WAUtf8CodecStream is a WACodecStream optimized for UTF-8 
     performance in the case where most of the characters are ASCII'>
@@ -7,7 +7,7 @@ GRGstConverterCodecStream subclass: GRGstUtf8CodecStream [
     Latin1ToUtf8Encodings := nil.
     Latin1ToUtf8Map := nil.
 
-    GRGstUtf8CodecStream class >> initialize [
+    GRGSTUtf8CodecStream class >> initialize [
 	<category: 'class initialization'>
 	(Smalltalk hasClassNamed: #UTF8TextConverter) 
 	    ifFalse: 
@@ -161,6 +161,6 @@ GRGstConverterCodecStream subclass: GRGstUtf8CodecStream [
 
 
 Eval [
-    GRGstUtf8CodecStream initialize
+    GRGSTUtf8CodecStream initialize
 ]
 

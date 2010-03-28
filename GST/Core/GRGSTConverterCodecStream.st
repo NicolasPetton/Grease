@@ -1,4 +1,4 @@
-GRCodecStream subclass: GRGstConverterCodecStream [
+GRCodecStream subclass: GRGSTConverterCodecStream [
     | converter binary |
     
     <comment: 'A WAConverterCodecStream is a WACodec stream around a TextConverter.
@@ -7,9 +7,9 @@ GRCodecStream subclass: GRGstConverterCodecStream [
 	converter:  <TextConverter>
 	binary - whether the receiver is in binary mode
 	converter - the TextConverter used to do the encoding conversion'>
-    <category: 'Grease-Pharo-Core'>
+    <category: 'Grease-GST-Core'>
 
-    GRGstConverterCodecStream class >> on: aStream converter: aConverter [
+    GRGSTConverterCodecStream class >> on: aStream converter: aConverter [
 	<category: 'instance creation'>
 	^self basicNew initalizeOn: aStream converter: aConverter
     ]

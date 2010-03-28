@@ -1,37 +1,37 @@
-GRObject subclass: GRGstRandomProvider [
+GRObject subclass: GRGSTRandomProvider [
     
     <comment: nil>
-    <category: 'Grease-Pharo-Core'>
+    <category: 'Grease-GST-Core'>
 
-    GRGstRandomProvider class [
+    GRGSTRandomProvider class [
 	| mutex generator |
 	
     ]
 
-    GRGstRandomProvider class >> initialize [
+    GRGSTRandomProvider class >> initialize [
 	<category: 'private'>
 	Smalltalk addToStartUpList: self.
 	self startUp
     ]
 
-    GRGstRandomProvider class >> randomClass [
+    GRGSTRandomProvider class >> randomClass [
 	<category: 'private'>
 	^Random
     ]
 
-    GRGstRandomProvider class >> unload [
+    GRGSTRandomProvider class >> unload [
 	<category: 'private'>
 	GRPlatform current removeFromStartUpList: self
     ]
 
-    GRGstRandomProvider class >> nextInt: anInteger [
+    GRGSTRandomProvider class >> nextInt: anInteger [
 	"Answer a random integer in the interval [1, anInteger]"
 
 	<category: 'public'>
 	^mutex critical: [generator nextInt: anInteger]
     ]
 
-    GRGstRandomProvider class >> randomFrom: aCollection [
+    GRGSTRandomProvider class >> randomFrom: aCollection [
 	<category: 'public'>
 	| random count |
 	random := self nextInt: aCollection size.
@@ -45,7 +45,7 @@ GRObject subclass: GRGstRandomProvider [
 			count := count + 1]]
     ]
 
-    GRGstRandomProvider class >> startUp [
+    GRGSTRandomProvider class >> startUp [
 	<category: 'class initialization'>
 	generator := self randomClass new.
 	mutex := Semaphore forMutualExclusion
@@ -55,6 +55,6 @@ GRObject subclass: GRGstRandomProvider [
 
 
 Eval [
-    GRGstRandomProvider initialize
+    GRGSTRandomProvider initialize
 ]
 

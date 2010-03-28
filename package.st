@@ -41,12 +41,13 @@ Eval [
     filein: 'Core/Utilities/GRUnboundDelayedSend.st';
     filein: 'Core/Utilities/GRInvalidArgumentCount.st';
 
-    filein: 'Gst/Core/GRGstConverterCodecStream.st';
-    filein: 'Gst/Core/GRGstUtf8CodecStream.st';
-    filein: 'Gst/Core/GRGstGenericCodec.st';
-    filein: 'Gst/Core/GRGstPlatform.st';
-    filein: 'Gst/Core/GRGstRandomProvider.st';
-    filein: 'Gst/Core/GRGstUtf8Codec.st';
+    filein: 'GST/Core/Extensions.st';
+    filein: 'GST/Core/GRGSTConverterCodecStream.st';
+    filein: 'GST/Core/GRGSTUtf8CodecStream.st';
+    filein: 'GST/Core/GRGSTGenericCodec.st';
+    filein: 'GST/Core/GRGSTPlatform.st';
+    filein: 'GST/Core/GRGSTRandomProvider.st';
+    filein: 'GST/Core/GRGSTUtf8Codec.st';
 
     filein: 'Tests/Core/GRCodecTest.st';
     filein: 'Tests/Core/GRCollectionTest.st';
@@ -75,8 +76,8 @@ Eval [
     filein: 'Tests/Core/GRUtf8CodecTest.st';
     filein: 'Tests/Core/GRVersionTest.st';
 
-    filein: 'Tests/Gst/Core/GRGstColorTest.st';
-    filein: 'Tests/Gst/Core/GRGstPlatformTest.st';
+    filein: 'Tests/GST/Core/GRGSTColorTest.st';
+    filein: 'Tests/GST/Core/GRGSTPlatformTest.st';
 
     buildXml
 ]

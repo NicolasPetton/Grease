@@ -32,8 +32,8 @@
     <filein>Tests/Core/GRNumberTest.st</filein>
     <filein>Tests/Core/GRUtf8CodecTest.st</filein>
     <filein>Tests/Core/GRStringTest.st</filein>
-    <filein>Tests/Gst/Core/GRGstPlatformTest.st</filein>
-    <filein>Tests/Gst/Core/GRGstColorTest.st</filein>
+    <filein>Tests/GST/Core/GRGSTPlatformTest.st</filein>
+    <filein>Tests/GST/Core/GRGSTColorTest.st</filein>
     <file>Tests/Core/GRAbstractDictionaryTest.st</file>
     <file>Tests/Core/GRNotificationStub.st</file>
     <file>Tests/Core/GROrderedMultiMapTest.st</file>
@@ -61,8 +61,8 @@
     <file>Tests/Core/GRNumberTest.st</file>
     <file>Tests/Core/GRUtf8CodecTest.st</file>
     <file>Tests/Core/GRStringTest.st</file>
-    <file>Tests/Gst/Core/GRGstPlatformTest.st</file>
-    <file>Tests/Gst/Core/GRGstColorTest.st</file>
+    <file>Tests/GST/Core/GRGSTPlatformTest.st</file>
+    <file>Tests/GST/Core/GRGSTColorTest.st</file>
     <sunit>
       Grease.GRAbstractDictionaryTest
       Grease.GROrderedMultiMapTest
@@ -88,8 +88,8 @@
       Grease.GRNumberTest
       Grease.GRUtf8CodecTest
       Grease.GRStringTest
-      Grease.GRGstPlatformTest
-      Grease.GRGstColorTest
+      Grease.GRGSTPlatformTest
+      Grease.GRGSTColorTest
     </sunit>
   </test>
   <filein>Core/GRObject.st</filein>
@@ -120,12 +120,13 @@
   <filein>Core/Utilities/GRBoundDelayedSend.st</filein>
   <filein>Core/Utilities/GRUnboundDelayedSend.st</filein>
   <filein>Core/Utilities/GRInvalidArgumentCount.st</filein>
-  <filein>Gst/Core/GRGstConverterCodecStream.st</filein>
-  <filein>Gst/Core/GRGstUtf8CodecStream.st</filein>
-  <filein>Gst/Core/GRGstGenericCodec.st</filein>
-  <filein>Gst/Core/GRGstPlatform.st</filein>
-  <filein>Gst/Core/GRGstRandomProvider.st</filein>
-  <filein>Gst/Core/GRGstUtf8Codec.st</filein>
+  <filein>GST/Core/Extensions.st</filein>
+  <filein>GST/Core/GRGSTConverterCodecStream.st</filein>
+  <filein>GST/Core/GRGSTUtf8CodecStream.st</filein>
+  <filein>GST/Core/GRGSTGenericCodec.st</filein>
+  <filein>GST/Core/GRGSTPlatform.st</filein>
+  <filein>GST/Core/GRGSTRandomProvider.st</filein>
+  <filein>GST/Core/GRGSTUtf8Codec.st</filein>
   <filein>Tests/Core/GRCodecTest.st</filein>
   <filein>Tests/Core/GRCollectionTest.st</filein>
   <filein>Tests/Core/GRAbstractDictionaryTest.st</filein>
@@ -152,8 +153,8 @@
   <filein>Tests/Core/GROrderedMultiMapTest.st</filein>
   <filein>Tests/Core/GRUtf8CodecTest.st</filein>
   <filein>Tests/Core/GRVersionTest.st</filein>
-  <filein>Tests/Gst/Core/GRGstColorTest.st</filein>
-  <filein>Tests/Gst/Core/GRGstPlatformTest.st</filein>
+  <filein>Tests/GST/Core/GRGSTColorTest.st</filein>
+  <filein>Tests/GST/Core/GRGSTPlatformTest.st</filein>
   <file>Core/GRObject.st</file>
   <file>Core/GRPlatform.st</file>
   <file>Core/GRPackage.st</file>
@@ -182,12 +183,13 @@
   <file>Core/Utilities/GRBoundDelayedSend.st</file>
   <file>Core/Utilities/GRUnboundDelayedSend.st</file>
   <file>Core/Utilities/GRInvalidArgumentCount.st</file>
-  <file>Gst/Core/GRGstConverterCodecStream.st</file>
-  <file>Gst/Core/GRGstUtf8CodecStream.st</file>
-  <file>Gst/Core/GRGstGenericCodec.st</file>
-  <file>Gst/Core/GRGstPlatform.st</file>
-  <file>Gst/Core/GRGstRandomProvider.st</file>
-  <file>Gst/Core/GRGstUtf8Codec.st</file>
+  <file>GST/Core/Extensions.st</file>
+  <file>GST/Core/GRGSTConverterCodecStream.st</file>
+  <file>GST/Core/GRGSTUtf8CodecStream.st</file>
+  <file>GST/Core/GRGSTGenericCodec.st</file>
+  <file>GST/Core/GRGSTPlatform.st</file>
+  <file>GST/Core/GRGSTRandomProvider.st</file>
+  <file>GST/Core/GRGSTUtf8Codec.st</file>
   <file>Tests/Core/GRCodecTest.st</file>
   <file>Tests/Core/GRCollectionTest.st</file>
   <file>Tests/Core/GRAbstractDictionaryTest.st</file>
@@ -214,6 +216,6 @@
   <file>Tests/Core/GROrderedMultiMapTest.st</file>
   <file>Tests/Core/GRUtf8CodecTest.st</file>
   <file>Tests/Core/GRVersionTest.st</file>
-  <file>Tests/Gst/Core/GRGstColorTest.st</file>
-  <file>Tests/Gst/Core/GRGstPlatformTest.st</file>
+  <file>Tests/GST/Core/GRGSTColorTest.st</file>
+  <file>Tests/GST/Core/GRGSTPlatformTest.st</file>
 </package>
