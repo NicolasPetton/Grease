@@ -1,8 +1,82 @@
+Object extend [
+    isEmptyOrNil [
+	<category: '*Grease-GST-Core'>
+	^false
+    ]
+]
+
+Collection extend [
+    isEmptyOrNil [
+	<category: '*Grease-GST-Core'>
+	^self isEmpty
+    ]
+]
+
+UndefinedObject extend [
+    isEmptyOrNil [
+	<category: '*Grease-GST-Core'>
+	^true
+    ]
+]
+
+BlockClosure extend [
+    fixCallbackTemps [
+	<category: '*Grease-GST-Core'>
+    ]
+]
+
 Behavior extend [
     
     fullName [
 	<category: '*Grease-GST-Core'>
 	^self nameIn: Smalltalk
+    ]
+
+    startUp: aBoolean [
+	"StartUo/ShutDown. See GRGSTPlatform class methods about startUpList and shutDownList"
+	<category: '*Grease-GST-Core'>
+    ]
+
+    shutDown: aBoolean [
+	"StartUo/ShutDown. See GRGSTPlatform class methods about startUpList and shutDownList"
+	<category: '*Grease-GST-Core'>
+    ]
+]
+
+DirectedMessage extend [
+    
+    valueWithPossibleArguments: aCollection [
+	<category: '*Grease-GST-Core'>
+	| args |
+	(aCollection size == self selector numArgs)
+	    ifTrue: [^self valueWithArguments: aCollection].
+	args := Array new: self selector numArgs.
+	args replaceFrom: 1
+		to: (aCollection size min: args size)
+		with: aCollection
+		startingAt: 1.
+	^self valueWithArguments: args
+    ]
+]
+
+BlockClosure extend [
+
+    argumentCount [
+	<category: '*Grease-GST-Core'>
+	^self numArgs
+    ]
+
+    valueWithPossibleArguments: aCollection [
+	<category: '*Grease-GST-Core'>
+	| args |
+	(aCollection size == self numArgs)
+	    ifTrue: [^self valueWithArguments: aCollection].
+	args := Array new: self numArgs.
+	args replaceFrom: 1
+		to: (aCollection size min: args size)
+		with: aCollection
+		startingAt: 1.
+	^self valueWithArguments: args
     ]
 ]
 
@@ -46,6 +120,11 @@ Character extend [
     greaseInteger [
 	<category: '*Grease-GST-Core'>
 	^self codePoint
+    ]
+
+    asUnicode [
+	<category: '*Grease-GST-Core'>
+	^UnicodeCharacter value: self value
     ]
 ]
 

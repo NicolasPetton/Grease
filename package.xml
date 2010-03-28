@@ -150,6 +150,7 @@
   <filein>Tests/Core/GRPackageTest.st</filein>
   <filein>Tests/Core/GRPlatformTest.st</filein>
   <filein>Tests/Core/GRPrinterTest.st</filein>
+  <filein>Tests/Core/GRSmallDictionaryTest.st</filein>
   <filein>Tests/Core/GROrderedMultiMapTest.st</filein>
   <filein>Tests/Core/GRUtf8CodecTest.st</filein>
   <filein>Tests/Core/GRVersionTest.st</filein>
@@ -213,6 +214,7 @@
   <file>Tests/Core/GRPackageTest.st</file>
   <file>Tests/Core/GRPlatformTest.st</file>
   <file>Tests/Core/GRPrinterTest.st</file>
+  <file>Tests/Core/GRSmallDictionaryTest.st</file>
   <file>Tests/Core/GROrderedMultiMapTest.st</file>
   <file>Tests/Core/GRUtf8CodecTest.st</file>
   <file>Tests/Core/GRVersionTest.st</file>

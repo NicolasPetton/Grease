@@ -5,14 +5,52 @@ GRPlatform subclass: GRGSTPlatform [
     that can not be implemented in a platform independent way.'>
     <category: 'Grease-Gst-Core'>
 
-    GRGSTPlatform class >> initialize [
-	<category: 'class initialization'>
-	self select
-    ]
+    GRGSTPlatform class [
+	| startUpList shutdownList |
 
-    GRGSTPlatform class >> unload [
-	<category: 'class initialization'>
-	self unselect
+	initialize [
+	    <category: 'class initialization'>
+	    startUpList := OrderedCollection new.
+	    shutdownList := OrderedCollection new.
+	    self select
+	]
+
+	unload [
+	    <category: 'class initialization'>
+	    self unselect
+	]
+
+	update: anAspect [
+	    <category: 'startup'>
+	    anAspect == #returnFromSnapshot ifTrue: [
+		startUpList do: [:each | each startUp: true]].
+	    anAspect == #aboutToQuit ifTrue: [
+		shutdownList do: [:each | each shutDown: true]]
+	]
+
+	addToStartUpList: anObject [
+	    <category: 'startup'>
+	    (startUpList includes: anObject) ifFalse: [
+		startUpList add: anObject]
+	]
+
+	addToShutDownList: anObject [
+	    <category: 'startup'>
+	    (shutdownList includes: anObject) ifFalse: [
+		shutdownList add: anObject]
+	]
+
+	removeFromStartUpList: anObject [
+	    <category: 'startup'>
+	    (startUpList includes: anObject) ifTrue: [
+		startUpList remove: anObject]
+	]
+
+	removeFromShutDownList: anObject [
+	    <category: 'startup'>
+	    (shutdownList includes: anObject) ifTrue: [
+		shutdownList remove: anObject]
+	]
     ]
 
     addToShutDownList: anObject [
@@ -20,7 +58,7 @@ GRPlatform subclass: GRGSTPlatform [
 	message #shutDown will be sent to anObject."
 
 	<category: 'startup'>
-	Smalltalk addToShutDownList: anObject
+	self class addToShutDownList: anObject
     ]
 
     addToStartUpList: anObject [
@@ -28,21 +66,21 @@ GRPlatform subclass: GRGSTPlatform [
 	#startUp will be sent to anObject."
 
 	<category: 'startup'>
-	Smalltalk addToStartUpList: anObject
+	self class addToStartUpList: anObject
     ]
 
     removeFromShutDownList: anObject [
 	"Remove anObject from the shutdown list in the system."
 
 	<category: 'startup'>
-	Smalltalk removeFromShutDownList: anObject
+	self class removeFromShutDownList: anObject
     ]
 
     removeFromStartUpList: anObject [
 	"Remove anObject from the startup list in the system."
 
 	<category: 'startup'>
-	Smalltalk removeFromStartUpList: anObject
+	self class removeFromStartUpList: anObject
     ]
 
     asMethodReturningByteArray: aByteArrayOrString named: aSymbol [
@@ -58,51 +96,16 @@ GRPlatform subclass: GRGSTPlatform [
     ]
 
     compile: aString into: aClass classified: aSymbol [
-	"The trick here is to be as silently a possible so that the package
-	is not marked dirty when running WAFileLibrary test.
-	This also makes running tests much faster."
-
 	<category: 'file library'>
-	| methodNode compiledMethod selector methodAndNode |
-	methodNode := aClass compilerClass new 
-	    compile: aString
-	    in: aClass
-	    notifying: nil
-	    ifFail: [GRError signal: 'syntax error'].
-	selector := methodNode selector.
-	methodAndNode := CompiledMethodWithNode generateMethodFromNode: methodNode
-	    trailer: aClass defaultMethodTrailer.
-	compiledMethod := methodAndNode method.
-	compiledMethod 
-	    putSource: aString
-	    fromParseNode: methodAndNode node
-	    inFile: 2
-	    withPreamble: 
-		[:file | 
-		file
-		    nextPut: Character cr;
-		    nextPut: $!;
-		    nextChunkPut: 'Behavior method';
-		    nextPut: Character cr].
-	aClass addSelectorSilently: selector withMethod: compiledMethod.
-	SystemChangeNotifier uniqueInstance 
-	    doSilently: [aClass organization classify: selector under: aSymbol]
+	aClass compile: aString classified: aSymbol
     ]
 
     contentsOfFile: aString binary: aBoolean [
 	<category: 'file library'>
-	| stream |
-	stream := aBoolean 
-		    ifTrue: 
-			[(FileDirectory default oldFileNamed: aString)
-			    binary;
-			    yourself]
-		    ifFalse: 
-			[(MultiByteFileStream oldFileNamed: aString)
-			    ascii;
-			    wantsLineEndConversion: true;
-			    yourself].
-	^[stream contents] ensure: [stream close]
+	| data |
+	data := (File name: aString) contents.
+	aBoolean ifTrue: [ data := data asByteArray ].
+	^data
     ]
 
     convertToSmalltalkNewlines: aString [
@@ -110,7 +113,7 @@ GRPlatform subclass: GRGSTPlatform [
 
 	<category: 'file library'>
 	aString isNil ifTrue: [^nil].
-	^String streamContents: 
+	^aString class streamContents: 
 		[:writeStream | 
 		| readStream |
 		readStream := aString readStream.

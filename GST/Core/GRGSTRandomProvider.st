@@ -10,7 +10,7 @@ GRObject subclass: GRGSTRandomProvider [
 
     GRGSTRandomProvider class >> initialize [
 	<category: 'private'>
-	Smalltalk addToStartUpList: self.
+	GRPlatform current addToStartUpList: self.
 	self startUp
     ]
 

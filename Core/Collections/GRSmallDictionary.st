@@ -4,15 +4,23 @@ GRObject subclass: GRSmallDictionary [
     <category: 'Grease-Core-Collections'>
     <comment: 'I am an implementation of a dictionary. Compared to other dictionaries I am very efficient for small sizes, speed- and space-wise. I also remember the order in which elements are added, some of my users might depend on that. My implementation features some ideas from the RefactoringBrowser.'>
 
-    new [
-        <category: 'instance-creation'>
-        ^self new: 3
-    ]
+    GRSmallDictionary class [
 
-    new: anInteger [
-        <category: 'instance-creation'>
-        ^self basicNew initialize: anInteger
-    ]
+	new [
+	    <category: 'instance-creation'>
+	    ^self new: 3
+	]
+
+	new: anInteger [
+	    <category: 'instance-creation'>
+	    ^self basicNew initialize: anInteger
+	]
+
+	withAll: aCollection [
+	    <category: 'instance creation'>
+	    ^self new addAll: aCollection; yourself
+	]
+]
 
     initialize: anInteger [
         <category: 'initialization'>
@@ -24,6 +32,11 @@ GRObject subclass: GRSmallDictionary [
     isEmpty [
         <category: 'testing'>
         ^size = 0
+    ]
+
+    isDictionary [
+	<category: 'testing'>
+	^true
     ]
 
     add: anAssociation [
