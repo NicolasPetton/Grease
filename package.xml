@@ -7,8 +7,10 @@
   <test>
     <filein>Tests/Core/GRAbstractDictionaryTest.st</filein>
     <filein>Tests/Core/GRNotificationStub.st</filein>
+    <filein>Tests/Core/GROrderedMultiMapTest.st</filein>
     <filein>Tests/Core/GRDurationTest.st</filein>
     <filein>Tests/Core/GRSetTest.st</filein>
+    <filein>Tests/Core/GRPackageTest.st</filein>
     <filein>Tests/Core/GRIntervalTest.st</filein>
     <filein>Tests/Core/GRArrayTest.st</filein>
     <filein>Tests/Core/GRExceptionTest.st</filein>
@@ -17,14 +19,25 @@
     <filein>Tests/Core/GRDelayedSendTest.st</filein>
     <filein>Tests/Core/GRCollectionTest.st</filein>
     <filein>Tests/Core/GRIdentityDictionaryTest.st</filein>
+    <filein>Tests/Core/GRPlatformTest.st</filein>
+    <filein>Tests/Core/GRObjectStub.st</filein>
+    <filein>Tests/Core/GRPrinterTest.st</filein>
+    <filein>Tests/Core/GRVersionTest.st</filein>
+    <filein>Tests/Core/GRSmallDictionaryTest.st</filein>
     <filein>Tests/Core/GROrderedCollectionTest.st</filein>
+    <filein>Tests/Core/GRObjectTest.st</filein>
+    <filein>Tests/Core/GRNullCodecStreamTest.st</filein>
     <filein>Tests/Core/GRBagTest.st</filein>
     <filein>Tests/Core/GRCodecTest.st</filein>
+    <filein>Tests/Core/GRNumberTest.st</filein>
+    <filein>Tests/Core/GRUtf8CodecTest.st</filein>
     <filein>Tests/Core/GRStringTest.st</filein>
     <file>Tests/Core/GRAbstractDictionaryTest.st</file>
     <file>Tests/Core/GRNotificationStub.st</file>
+    <file>Tests/Core/GROrderedMultiMapTest.st</file>
     <file>Tests/Core/GRDurationTest.st</file>
     <file>Tests/Core/GRSetTest.st</file>
+    <file>Tests/Core/GRPackageTest.st</file>
     <file>Tests/Core/GRIntervalTest.st</file>
     <file>Tests/Core/GRArrayTest.st</file>
     <file>Tests/Core/GRExceptionTest.st</file>
@@ -33,14 +46,25 @@
     <file>Tests/Core/GRDelayedSendTest.st</file>
     <file>Tests/Core/GRCollectionTest.st</file>
     <file>Tests/Core/GRIdentityDictionaryTest.st</file>
+    <file>Tests/Core/GRPlatformTest.st</file>
+    <file>Tests/Core/GRObjectStub.st</file>
+    <file>Tests/Core/GRPrinterTest.st</file>
+    <file>Tests/Core/GRVersionTest.st</file>
+    <file>Tests/Core/GRSmallDictionaryTest.st</file>
     <file>Tests/Core/GROrderedCollectionTest.st</file>
+    <file>Tests/Core/GRObjectTest.st</file>
+    <file>Tests/Core/GRNullCodecStreamTest.st</file>
     <file>Tests/Core/GRBagTest.st</file>
     <file>Tests/Core/GRCodecTest.st</file>
+    <file>Tests/Core/GRNumberTest.st</file>
+    <file>Tests/Core/GRUtf8CodecTest.st</file>
     <file>Tests/Core/GRStringTest.st</file>
     <sunit>
       Grease.GRAbstractDictionaryTest
+      Grease.GROrderedMultiMapTest
       Grease.GRDurationTest
       Grease.GRSetTest
+      Grease.GRPackageTest
       Grease.GRIntervalTest
       Grease.GRArrayTest
       Grease.GRExceptionTest
@@ -48,9 +72,17 @@
       Grease.GRDelayedSendTest
       Grease.GRCollectionTest
       Grease.GRIdentityDictionaryTest
+      Grease.GRPlatformTest
+      Grease.GRPrinterTest
+      Grease.GRVersionTest
+      Grease.GRSmallDictionaryTest
       Grease.GROrderedCollectionTest
+      Grease.GRObjectTest
+      Grease.GRNullCodecStreamTest
       Grease.GRBagTest
       Grease.GRCodecTest
+      Grease.GRNumberTest
+      Grease.GRUtf8CodecTest
       Grease.GRStringTest
     </sunit>
   </test>
@@ -98,6 +130,16 @@
   <filein>Tests/Core/GRErrorStub.st</filein>
   <filein>Tests/Core/GRExceptionTest.st</filein>
   <filein>Tests/Core/GRNotificationStub.st</filein>
+  <filein>Tests/Core/GRNullCodecStreamTest.st</filein>
+  <filein>Tests/Core/GRNumberTest.st</filein>
+  <filein>Tests/Core/GRObjectStub.st</filein>
+  <filein>Tests/Core/GRObjectTest.st</filein>
+  <filein>Tests/Core/GRPackageTest.st</filein>
+  <filein>Tests/Core/GRPlatformTest.st</filein>
+  <filein>Tests/Core/GRPrinterTest.st</filein>
+  <filein>Tests/Core/GROrderedMultiMapTest.st</filein>
+  <filein>Tests/Core/GRUtf8CodecTest.st</filein>
+  <filein>Tests/Core/GRVersionTest.st</filein>
   <file>Core/GRObject.st</file>
   <file>Core/GRPlatform.st</file>
   <file>Core/GRPackage.st</file>
@@ -142,4 +184,14 @@
   <file>Tests/Core/GRErrorStub.st</file>
   <file>Tests/Core/GRExceptionTest.st</file>
   <file>Tests/Core/GRNotificationStub.st</file>
+  <file>Tests/Core/GRNullCodecStreamTest.st</file>
+  <file>Tests/Core/GRNumberTest.st</file>
+  <file>Tests/Core/GRObjectStub.st</file>
+  <file>Tests/Core/GRObjectTest.st</file>
+  <file>Tests/Core/GRPackageTest.st</file>
+  <file>Tests/Core/GRPlatformTest.st</file>
+  <file>Tests/Core/GRPrinterTest.st</file>
+  <file>Tests/Core/GROrderedMultiMapTest.st</file>
+  <file>Tests/Core/GRUtf8CodecTest.st</file>
+  <file>Tests/Core/GRVersionTest.st</file>
 </package>
