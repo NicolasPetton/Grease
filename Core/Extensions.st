@@ -11,9 +11,19 @@ Object extend [
 	<category: '*Grease-Core'>
 	^false
     ]
+
+    greaseString [
+	<category: '*Grease-Core'>
+	^self printString
+    ]
 ]
 
 String extend [
+
+    greaseString [
+	<category: '*Grease-Core'>
+	^self
+    ]
 
     excerpt: aString [
 	<category: '*Grease-Core'>

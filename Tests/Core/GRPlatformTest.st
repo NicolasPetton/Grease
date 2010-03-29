@@ -85,7 +85,7 @@ TestCase subclass: GRPlatformTest [
     testDateArithmetic [
 	<category: 'testing'>
 	| today tomorrow oneDay minusOneDay |
-	today := DateAndTime 
+	today := DateTime 
 	    year: 2008
 	    month: 9
 	    day: 13
@@ -93,7 +93,7 @@ TestCase subclass: GRPlatformTest [
 	    minute: 32
 	    second: 5
 	    offset: Duration zero.
-	tomorrow := DateAndTime 
+	tomorrow := DateTime 
 	    year: 2008
 	    month: 9
 	    day: 14

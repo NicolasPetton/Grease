@@ -43,6 +43,41 @@ Behavior extend [
     ]
 ]
 
+Time class extend [
+
+    totalSeconds [
+	<category: '*Grease-GST-Core'>
+	^self secondClock
+    ]
+]
+
+Date class extend [
+    
+    year: y month: m day: d [
+	<category: '*Grease-GST-Core'>
+	^self new setDay: d monthIndex: m year: y
+    ]
+]
+
+PositionableStream extend [
+    
+    greaseUpToAll: aCollection [
+	"Needed for Seaside ports to other dialects where #upToAll: may have
+	different semantics"
+	^ self upToAll: aCollection
+    ]
+]
+
+WriteStream extend [
+    
+    crlf [
+	<category: '*Grease-GST-Core'>
+	self 
+	    nextPut: Character cr; 
+	    nextPut: Character lf
+    ]
+]
+
 DirectedMessage extend [
     
     valueWithPossibleArguments: aCollection [
@@ -82,13 +117,37 @@ BlockClosure extend [
 
 Symbol extend [
 
+
     capitalized [
 	<category: '*Grease-GST-Core'>
 	^self asString capitalized asSymbol
     ]
+
+    isKeyword [
+	<category: '*Grease-GST-Core'>
+	^self last = $:
+    ]
+
+    isUnary [
+	<category: '*Grease-GST-Core'>
+	^self isKeyword not and: [
+	    self first isLetter]
+    ]
+
+    asMutator [
+	<category: '*Grease-GST-Core'>
+	"Return a setter message from a getter message. For example,
+	#name asMutator returns #name:"
+	^ (self copyWith: $:) asSymbol
+    ]
 ]
 
 String extend [
+
+    reversed [
+	<category: '*Grease-GST-Core'>
+	^self reverse
+    ]
 
     beginsWith: aString [
 	<category: '*Grease-GST-Core'>
@@ -130,6 +189,11 @@ Character extend [
 
 Number extend [
 
+    isFraction [
+	<category: '*Grease-GST-Core'>
+	^false
+    ]
+
     weeks [
 	<category: '*Grease-GST-Core'>
 	^Duration weeks: self
@@ -158,6 +222,13 @@ Number extend [
     milliseconds [
 	<category: '*Grease-GST-Core'>
 	^Duration milliseconds: self
+    ]
+]
+
+Integer extend [
+    isZero [
+	<category: '*Grease-GST-Core'>
+	^self == 0
     ]
 ]
 
