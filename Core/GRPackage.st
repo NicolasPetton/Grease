@@ -5,32 +5,12 @@ GRObject subclass: GRPackage [
     <category: 'Grease-Core'>
 
 
-    GRPackage class >> greasePharoCore [
-	<category: '*grease-gst-core'>
-	^(self new)
-	    name: 'Grease-Gst-Core';
-	    addDependency: 'Grease-Core';
-	    url: #seasideUrl;
-	    yourself
-    ]
-
     GRPackage class >> greaseTestsCore [
 	<category: '*grease-tests-core'>
 	^(self new)
 	    name: 'Grease-Tests-Core';
 	    description: 'Unit tests for the package Grease-Core.';
 	    addDependency: 'Grease-Core';
-	    url: #seasideUrl;
-	    yourself
-    ]
-
-    GRPackage class >> greaseTestsPharoCore [
-	<category: '*grease-tests-pharo-core'>
-	^(self new)
-	    name: 'Grease-Tests-Pharo-Core';
-	    description: 'Unit tests for the package Grease-Pharo-Core.';
-	    addDependency: 'Grease-Pharo-Core';
-	    addDependency: 'Grease-Tests-Core';
 	    url: #seasideUrl;
 	    yourself
     ]

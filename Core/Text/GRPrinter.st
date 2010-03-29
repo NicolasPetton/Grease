@@ -129,7 +129,7 @@ GRObject subclass: GRPrinter [
     GRPrinter class >> fullWeekName [
 	<category: 'parts-date'>
 	^self 
-	    weekName: #('Sunday' 'Monday' 'Tuesday' 'Wednesday' 'Thursday' 'Friday' 'Saturday')
+	    weekName: #('Monday' 'Tuesday' 'Wednesday' 'Thursday' 'Friday' 'Saturday' 'Sunday')
     ]
 
     GRPrinter class >> monthName: anArray [

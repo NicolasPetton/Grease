@@ -3,6 +3,7 @@
   <url>git://github.com/NicolasPetton/Grease.git</url>
   <namespace>Grease</namespace>
   <prereq>Iconv</prereq>
+  <prereq>Digest</prereq>
   <prereq>SUnit</prereq>
   <test>
     <filein>Tests/Core/GRAbstractDictionaryTest.st</filein>

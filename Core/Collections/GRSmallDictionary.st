@@ -39,6 +39,11 @@ GRObject subclass: GRSmallDictionary [
 	^true
     ]
 
+    isCollection [
+	<category: 'testing'>
+	^true
+    ]
+
     add: anAssociation [
 	<category: 'accessing'>
 	self at: anAssociation key put: anAssociation value.

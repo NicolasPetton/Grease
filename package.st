@@ -3,6 +3,7 @@ Eval [
     name: 'Grease';
     namespace: 'Grease';
     prereq: 'Iconv';
+    prereq: 'Digest';
     prereq: 'SUnit';
 
     testsBelow: 'Tests' matching: '*.st';

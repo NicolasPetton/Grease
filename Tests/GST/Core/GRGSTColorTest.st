@@ -7,7 +7,7 @@ TestCase subclass: GRGSTColorTest [
 	<category: 'testing'>
 	^#(#testFromStringThreeDigit)
     ]
-
+"
     testAllColors [
 	<category: 'testing'>
 	| toTest |
@@ -23,7 +23,7 @@ TestCase subclass: GRGSTColorTest [
 	    self assert: (Color fromString: hex) asHTMLColor asLowercase 
 		= ('#' , hex) asLowercase]
     ]
-
+"
     testColorAsHtmlColor [
 	"test for:
 	 Color >> #hex
@@ -39,13 +39,13 @@ TestCase subclass: GRGSTColorTest [
 	 
 	 Color >> #asHTMLColor
 	 ^ '#', self hex"
-
+"
 	<category: 'testing'>
 	self assert: (#('#ffffff' '#FFFFFF') includes: Color white asHTMLColor).
 	self assert: Color black asHTMLColor = '#000000'.
 	self assert: (#('#ff0000' '#FF0000') includes: Color red asHTMLColor)
-    ]
-
+"    ]
+"
     testFromSixDigit [
 	<category: 'testing'>
 	self assert: (Color fromString: 'ff0000') = Color red.
@@ -77,5 +77,6 @@ TestCase subclass: GRGSTColorTest [
 	self assert: (Color fromString: '#f00') = Color red.
 	self assert: (Color fromString: '#F00') = Color red
     ]
+"
 ]
 

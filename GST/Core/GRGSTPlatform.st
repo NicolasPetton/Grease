@@ -265,14 +265,14 @@ GRPlatform subclass: GRGSTPlatform [
 	"ByteArray based read write stream"
 
 	<category: 'factory'>
-	^ReadWriteStream on: (ByteArray new: 4096)
+	^ReadWriteStream on: ByteArray new
     ]
 
     readWriteCharacterStream [
 	"String based read write stream"
 
 	<category: 'factory'>
-	^ReadWriteStream on: (String new: 4096)
+	^ReadWriteStream on: ''
     ]
 
     semaphoreClass [
@@ -312,14 +312,14 @@ GRPlatform subclass: GRGSTPlatform [
 	depth := 0.
 	current := thisContext.
 	[current isNil] whileFalse: 
-		[current := current sender.
+		[current := current parentContext.
 		depth := depth + 1].
 	^depth - 1
     ]
 
     secureHashFor: aString [
 	<category: 'cryptography'>
-	^SecureHashAlgorithm new hashMessage: aString
+	^MD5 digestOf: aString
     ]
 ]
 

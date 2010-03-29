@@ -230,7 +230,7 @@ TestCase subclass: GRPrinterTest [
 	<category: 'testing-timestamp'>
 	| printer date |
 	printer := GRPrinter cookieTimestamp.
-	date := DateAndTime 
+	date := DateTime 
 	    year: 2008
 	    month: 8
 	    day: 1
@@ -250,7 +250,7 @@ TestCase subclass: GRPrinterTest [
 	| printer date offsetHour |
 	offsetHour := 2.
 	printer := GRPrinter httpDate.
-	date := DateAndTime 
+	date := DateTime 
 	    year: 1994
 	    month: 11
 	    day: 6
@@ -317,7 +317,7 @@ TestCase subclass: GRPrinterTest [
 	<category: 'testing-timestamp'>
 	| printer date |
 	printer := GRPrinter rfc822.
-	date := DateAndTime 
+	date := DateTime 
 		    year: 2008
 		    month: 8
 		    day: 1
@@ -330,7 +330,7 @@ TestCase subclass: GRPrinterTest [
 			    minutes: 0
 			    seconds: 0).
 	self assert: (printer print: date) = 'Fri, 01 Aug 2008 09:04:04 -0200'.
-	date := DateAndTime 
+	date := DateTime 
 		    year: 2008
 		    month: 8
 		    day: 31
@@ -349,7 +349,7 @@ TestCase subclass: GRPrinterTest [
 	<category: 'testing-timestamp'>
 	| printer date |
 	printer := GRPrinter rfc822WithTimeZone: 'GMT'.
-	date := DateAndTime 
+	date := DateTime 
 		    year: 2008
 		    month: 8
 		    day: 1

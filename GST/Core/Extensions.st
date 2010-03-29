@@ -1,4 +1,36 @@
+GRPackage class extend [ 
+    
+    greaseGSTCore [
+	<category: '*Grease-GST-Core'>
+	^(self new)
+	    name: 'Grease-GST-Core';
+	    addDependency: 'Grease-Core';
+	    url: #gstUrl;
+	    yourself
+    ]
+
+    greaseTestsGSTCore [
+	<category: '*Grease-Tests-GST-Core'>
+	^(self new)
+	    name: 'Grease-Tests-GST-Core';
+	    description: 'Unit tests for the package Grease-GST-Core.';
+	    addDependency: 'Grease-GST-Core';
+	    addDependency: 'Grease-Tests-Core';
+	    url: #gstUrl;
+	    yourself
+    ]
+]
+
+GRPackage extend [
+    
+    gstUrl [
+	<category: '*Grease-GST-Core'>
+	^'http://git.savannah.gnu.org/r/smalltalk.git/'
+    ]
+]
+
 Object extend [
+
     isEmptyOrNil [
 	<category: '*Grease-GST-Core'>
 	^false
@@ -6,13 +38,19 @@ Object extend [
 ]
 
 Collection extend [
+
     isEmptyOrNil [
 	<category: '*Grease-GST-Core'>
 	^self isEmpty
     ]
 ]
 
+Interval extend [
+    
+]
+
 UndefinedObject extend [
+
     isEmptyOrNil [
 	<category: '*Grease-GST-Core'>
 	^true
@@ -20,6 +58,7 @@ UndefinedObject extend [
 ]
 
 BlockClosure extend [
+
     fixCallbackTemps [
 	<category: '*Grease-GST-Core'>
     ]
@@ -78,19 +117,37 @@ WriteStream extend [
     ]
 ]
 
-DirectedMessage extend [
+Random extend [
     
-    valueWithPossibleArguments: aCollection [
+    nextInt: anInteger [
 	<category: '*Grease-GST-Core'>
-	| args |
-	(aCollection size == self selector numArgs)
-	    ifTrue: [^self valueWithArguments: aCollection].
-	args := Array new: self selector numArgs.
-	args replaceFrom: 1
-		to: (aCollection size min: args size)
-		with: aCollection
+	anInteger strictlyPositive ifFalse: [ self error: 'Range must be positive' ].
+	^(self next * anInteger) truncated + 1
+    ]
+
+]
+
+DirectedMessage extend [
+
+    value: firstArgument value: secondArgument [
+	<category: '*Grease-GST-Core'>
+	self valueWithArguments: (Array with: firstArgument with: secondArgumen)
+    ]
+
+    valueWithPossibleArguments: anArray [
+	<category: '*Grease-GST-Core'>
+	| arguments |
+	arguments := Array new: self selector numArgs.
+	arguments replaceFrom: 1
+		to: (args size min: arguments size)
+		with: args
 		startingAt: 1.
-	^self valueWithArguments: args
+	arguments size > args size ifTrue: [
+		arguments replaceFrom: args size + 1
+			to: (args size + anArray size min: arguments size)
+			with: anArray
+			startingAt: 1].
+	^self valueWithArguments: arguments
     ]
 ]
 
@@ -183,7 +240,7 @@ Character extend [
 
     asUnicode [
 	<category: '*Grease-GST-Core'>
-	^UnicodeCharacter value: self value
+	^(UnicodeCharacter codePoint: self codePoint) value
     ]
 ]
 
@@ -226,9 +283,25 @@ Number extend [
 ]
 
 Integer extend [
+
     isZero [
 	<category: '*Grease-GST-Core'>
 	^self == 0
+    ]
+]
+
+Float class extend [
+    
+    nan [
+	<category: '*Grease-GST-Core'>
+	"Why a FloatD?"
+	^FloatD nan
+    ]
+
+    infinity [
+	<category: '*Grease-GST-Core'>
+	"Why a FloatD?"
+	^FloatD infinity
     ]
 ]
 

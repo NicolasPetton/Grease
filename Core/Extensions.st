@@ -165,6 +165,14 @@ String extend [
     ]
 ]
 
+Symbol extend [
+    
+    greaseString [
+	<category: '*Grease-Core'>
+	^self asString
+    ]
+]
+
 Number extend [
     
     greaseInteger [
@@ -199,6 +207,11 @@ Character extend [
     print: anObject on: aStream [
 	<category: '*Grease-Core'>
 	aStream nextPut: self
+    ]
+
+    greaseString [
+	<category: '*Grease-Core'>
+	^self asString
     ]
 ]
 
