@@ -121,7 +121,7 @@
   <filein>GST/Core/Extensions.st</filein>
   <filein>GST/Core/GRGSTConverterCodecStream.st</filein>
   <filein>GST/Core/GRGSTUtf8CodecStream.st</filein>
-  <filein>GST/Core/GRGSTGenericCodec.st</filein>
+  <filein>GST/Core/GRGSTIconvISO88591Codec.st</filein>
   <filein>GST/Core/GRGSTPlatform.st</filein>
   <filein>GST/Core/GRGSTRandomProvider.st</filein>
   <filein>GST/Core/GRGSTUtf8Codec.st</filein>
@@ -184,7 +184,7 @@
   <file>GST/Core/Extensions.st</file>
   <file>GST/Core/GRGSTConverterCodecStream.st</file>
   <file>GST/Core/GRGSTUtf8CodecStream.st</file>
-  <file>GST/Core/GRGSTGenericCodec.st</file>
+  <file>GST/Core/GRGSTIconvISO88591Codec.st</file>
   <file>GST/Core/GRGSTPlatform.st</file>
   <file>GST/Core/GRGSTRandomProvider.st</file>
   <file>GST/Core/GRGSTUtf8Codec.st</file>

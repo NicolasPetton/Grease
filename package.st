@@ -45,7 +45,7 @@ Eval [
     filein: 'GST/Core/Extensions.st';
     filein: 'GST/Core/GRGSTConverterCodecStream.st';
     filein: 'GST/Core/GRGSTUtf8CodecStream.st';
-    filein: 'GST/Core/GRGSTGenericCodec.st';
+    filein: 'GST/Core/GRGSTIconvISO88591Codec.st';
     filein: 'GST/Core/GRGSTPlatform.st';
     filein: 'GST/Core/GRGSTRandomProvider.st';
     filein: 'GST/Core/GRGSTUtf8Codec.st';

@@ -88,11 +88,13 @@ GRPlatform subclass: GRGSTPlatform [
 	aByteArrayOrString as a ByteArray"
 
 	<category: 'file library'>
-	^self useByteArrayLiterals 
-	    ifTrue: 
-		[self asMethodReturningByteArrayLiteral: aByteArrayOrString named: aSymbol]
-	    ifFalse: 
-		[self asMethodReturningByteArrayWithCache: aByteArrayOrString named: aSymbol]
+	String streamContents: [ :stream |
+		stream nextPutAll: aSymbol; nextPutAll: ' [ '; nl.
+		stream tab; nextPutAll: '    ^#['.
+		aByteArrayOrString asByteArray
+			do: [ :each | each printOn: stream ]
+			separatedBy: [ stream space ].
+		stream nextPutAll: ']'; nl; nextPutAll: ']' ]
     ]
 
     compile: aString into: aClass classified: aSymbol [
@@ -112,29 +114,29 @@ GRPlatform subclass: GRGSTPlatform [
 	"Convert any line endings (CR, CRLF, LF) to CR."
 
 	<category: 'file library'>
-	aString isNil ifTrue: [^nil].
-	^aString class streamContents: 
-		[:writeStream | 
+	aString isNil ifTrue: [ ^ nil ].
+	^aString class streamContents: [ :writeStream |
 		| readStream |
 		readStream := aString readStream.
-		[readStream atEnd] whileFalse: 
-			[| next |
+		[ readStream atEnd ] whileFalse: [
+			| next |
 			next := readStream next.
-			next = Character cr 
-			    ifTrue: 
-				[readStream peek = Character lf ifTrue: [readStream skip: 1].
-				writeStream nextPut: Character cr]
-			    ifFalse: 
-				[next = Character lf 
-				    ifTrue: [writeStream nextPut: Character cr]
-				    ifFalse: [writeStream nextPut: next]]]]
+			next = Character cr
+				ifTrue: [
+					readStream peek = Character lf
+						ifTrue: [ readStream skip: 1 ].
+					writeStream nextPut: Character cr ]
+				ifFalse: [
+					next = Character lf
+						ifTrue: [ writeStream nextPut: Character cr ]
+						ifFalse: [ writeStream nextPut: next ] ] ] ]
     ]
 
     ensureExistenceOfFolder: aString [
 	"creates a folder named aString in the image directory"
 
 	<category: 'file library'>
-	FileDirectory default assureExistenceOfPath: aString
+	(Directory image / aString) create
     ]
 
     filesIn: aPathString [
@@ -143,86 +145,71 @@ GRPlatform subclass: GRGSTPlatform [
 
 	<category: 'file library'>
 	| directory |
-	directory := FileDirectory default directoryNamed: aPathString.
-	^(directory fileNames reject: [:each | each first = $.]) 
-	    collect: [:each | directory fullNameFor: each]
+	directory := File name: aPathString.
+	^(directory files
+		reject: [ :each | each first = $. ])
+		collect: [ :each | each asString ]
     ]
 
     localNameOf: aFilename [
 	<category: 'file library'>
-	^(FileDirectory on: aFilename) localName
+	^File fullNameFor: aFilename
     ]
 
     removeSelector: aSymbol from: aClass [
 	<category: 'file library'>
-	aClass removeSelectorSilently: aSymbol
+	aClass removeSelector: aSymbol
     ]
 
     write: aStringOrByteArray toFile: aFileNameString inFolder: aFolderString [
 	"writes aStringOrByteArray to a file named aFilenameString in the folder aFolderString"
 
 	<category: 'file library'>
-	| folder stream fullFilePath |
-	folder := FileDirectory default directoryNamed: aFolderString.
-	fullFilePath := folder fullNameFor: aFileNameString.
-	stream := aStringOrByteArray isString 
-		    ifTrue: 
-			[(CrLfFileStream forceNewFileNamed: fullFilePath)
-			    ascii;
-			    wantsLineEndConversion: true;
-			    yourself]
-		    ifFalse: [(FileStream forceNewFileNamed: fullFilePath) binary].
-	[stream nextPutAll: aStringOrByteArray] ensure: [stream close]
-    ]
-
-    asMethodReturningByteArrayLiteral: aByteArrayOrString named: aSymbol [
-	"Generates the source of a method named aSymbol that returns 
-	aByteArrayOrString as a byte array using VW/NewCompiler byte array 
-	literal syntax."
-
-	<category: 'private-file library'>
-	^String streamContents: 
-		[:stream | 
-		stream
-		    nextPutAll: aSymbol;
-		    nextPut: Character cr.
-		stream
-		    tab;
-		    nextPutAll: '^ #['.
-		aByteArrayOrString asByteArray do: [:each | each printOn: stream]
-		    separatedBy: [stream space].
-		stream nextPutAll: ']']
-    ]
-
-    asMethodReturningByteArrayWithCache: aByteArrayOrString named: aSymbol [
-	"Generates the source of a method named aSymbol that returns 
-	aByteArrayOrString as a byte array and caching this array in 
-	a literal array of size 1."
-
-	<category: 'private-file library'>
-	^String streamContents: 
-		[:stream | 
-		stream
-		    nextPutAll: aSymbol;
-		    nextPut: Character cr.
-		stream
-		    tab;
-		    nextPutAll: '^ #('.
-		aByteArrayOrString asByteArray do: [:each | each printOn: stream]
-		    separatedBy: [stream space].
-		stream nextPutAll: ') asByteArray']
-    ]
-
-    useByteArrayLiterals [
-	"whether ByteArray literals can/should be used"
-
-	<category: 'private-file library'>
-	^Preferences valueOfFlag: #compileUseNewCompiler ifAbsent: [false]
+	| stream fileName |
+	aFolderString / aFileNameString withWriteStreamDo: [ :stream |
+	    stream nextPutAll: aStringOrByteArray ]
     ]
 
     base64Decode: aString [
 	<category: 'encoding'>
-	^(Base64MimeConverter mimeDecodeToChars: aString readStream) contents
+	| codeChars decoder output index nl endChars end limit padding data sz |
+        codeChars := 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'.
+        decoder := (0 to: 255)
+                    collect: [:n | (codeChars indexOf: (n + 1) asCharacter) - 1].
+        decoder replaceAll: -1 with: 0.
+        output := (data := String new: aString size * 3 // 4)
+                    writeStream.
+        index := 1.
+        nl := Character nl.
+        "There is padding at the end of a base64 message if the content is not a multiple of
+         3 bytes in length.  The padding is either two ='s to pad-out a trailing byte, 1 = to
+         pad out a trailing pair of bytes, or no padding.  Here we count the padding.  After
+         processing the message we cut-back by the amount of padding."
+        sz := end := aString size.
+        endChars := codeChars , (String with: $=).
+
+        [(endChars includes: (aString at: end))
+            and: [end = sz or: [(aString at: end + 1) = nl]]]
+                whileFalse: [end := end - 1].
+        limit := end.
+        padding := 0.
+        [(aString at: end) == $=] whileTrue:
+                [padding := padding - 1.
+                end := end - 1].
+        [index <= limit] whileTrue:
+                [| triple |
+                triple := ((decoder at: (aString at: index) asInteger) bitShift: 18)
+                            + ((decoder at: (aString at: index + 1) asInteger) bitShift: 12)
+                                + ((decoder at: (aString at: index + 2) asInteger) bitShift: 6)
+                                + (decoder at: (aString at: index + 3) asInteger).
+                output nextPut: (Character value: (triple digitAt: 3)).
+                output nextPut: (Character value: (triple digitAt: 2)).
+                output nextPut: (Character value: (triple digitAt: 1)).
+                index := index + 4.
+                [(index > sz or: [(aString at: index) = nl]) and: [index <= limit]]
+                    whileTrue: [index := index + 1]].
+        padding ~= 0 ifTrue: [output skip: padding].
+        ^data copyFrom: 1 to: output position
     ]
 
     isProcessTerminated: aProcess [
@@ -242,7 +229,7 @@ GRPlatform subclass: GRGSTPlatform [
 
     label [
 	<category: 'version info'>
-	^'Pharo'
+	^'GNU Smalltalk'
     ]
 
     newRandom [
@@ -284,7 +271,7 @@ GRPlatform subclass: GRGSTPlatform [
 
     weakDictionaryOfSize: aNumber [
 	<category: 'factory'>
-	^IdentityDictionary new: aNumber
+	^WeakKeyIdentityDictionary new: aNumber
     ]
 
     openDebuggerOn: anError [
