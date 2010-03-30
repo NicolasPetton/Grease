@@ -34,7 +34,6 @@
     <filein>Tests/Core/GRUtf8CodecTest.st</filein>
     <filein>Tests/Core/GRStringTest.st</filein>
     <filein>Tests/GST/Core/GRGSTPlatformTest.st</filein>
-    <filein>Tests/GST/Core/GRGSTColorTest.st</filein>
     <file>Tests/Core/GRAbstractDictionaryTest.st</file>
     <file>Tests/Core/GRNotificationStub.st</file>
     <file>Tests/Core/GROrderedMultiMapTest.st</file>
@@ -63,7 +62,6 @@
     <file>Tests/Core/GRUtf8CodecTest.st</file>
     <file>Tests/Core/GRStringTest.st</file>
     <file>Tests/GST/Core/GRGSTPlatformTest.st</file>
-    <file>Tests/GST/Core/GRGSTColorTest.st</file>
     <sunit>
       Grease.GRAbstractDictionaryTest
       Grease.GROrderedMultiMapTest
@@ -90,7 +88,6 @@
       Grease.GRUtf8CodecTest
       Grease.GRStringTest
       Grease.GRGSTPlatformTest
-      Grease.GRGSTColorTest
     </sunit>
   </test>
   <filein>Core/GRObject.st</filein>
@@ -155,7 +152,6 @@
   <filein>Tests/Core/GROrderedMultiMapTest.st</filein>
   <filein>Tests/Core/GRUtf8CodecTest.st</filein>
   <filein>Tests/Core/GRVersionTest.st</filein>
-  <filein>Tests/GST/Core/GRGSTColorTest.st</filein>
   <filein>Tests/GST/Core/GRGSTPlatformTest.st</filein>
   <file>Core/GRObject.st</file>
   <file>Core/GRPlatform.st</file>
@@ -219,6 +215,5 @@
   <file>Tests/Core/GROrderedMultiMapTest.st</file>
   <file>Tests/Core/GRUtf8CodecTest.st</file>
   <file>Tests/Core/GRVersionTest.st</file>
-  <file>Tests/GST/Core/GRGSTColorTest.st</file>
   <file>Tests/GST/Core/GRGSTPlatformTest.st</file>
 </package>

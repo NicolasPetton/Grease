@@ -78,7 +78,6 @@ Eval [
     filein: 'Tests/Core/GRUtf8CodecTest.st';
     filein: 'Tests/Core/GRVersionTest.st';
 
-    filein: 'Tests/GST/Core/GRGSTColorTest.st';
     filein: 'Tests/GST/Core/GRGSTPlatformTest.st';
 
     buildXml
