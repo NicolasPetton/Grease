@@ -5,12 +5,12 @@ TestCase subclass: GRCodecTest [
 
     latin1String [
 	<category: 'accessing'>
-	^self asString: #(220 98 232 114 115 116 114 238 241 103 233)
+	^'Übèrstrîñgé'
     ]
 
     macromanString [
 	<category: 'accessing'>
-	^self asString: #(134 98 143 114 115 116 114 148 150 103 142)
+	^'brstrg'
     ]
 
     utf16beString [

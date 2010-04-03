@@ -1,10 +1,10 @@
-GRCodec subclass: GRGSTIconvISO88591Codec [
+GRCodec subclass: GRGSTGenericCodec [
     | encoding urlCodec |
     
     <comment: nil>
     <category: 'Grease-GST-Core'>
 
-    GRGSTIconvISO88591Codec class [
+    GRGSTGenericCodec class [
 	
 	basicForEncoding: aString [
 	    <category: 'private'>
@@ -17,22 +17,24 @@ GRCodec subclass: GRGSTIconvISO88591Codec [
 	    "answers the names of the encodings supported by this class"
 
 	   <category: 'private'>
-	    ^#('UTF-8' 'ISO-8859-1') 
+	    ^#('UTF-8') 
 	]
 
 	codecs [
 	    <category: 'accessing'>
-	    ^self supportedEncodingNames collect: [:each | 
-		self basicForEncoding: each greaseString]
+	    ^self supportedEncodingNames collect: [:each |
+		self basicForEncoding: each]
 	]
 
 	supportsEncoding: aString [
 	    "Answer whether the the given encoding name is supported."
 
 	    <category: 'testing'>
-	    ^self supportedEncodingNames includes: aString
+	    ^aString asLowercase ~= 'iso-8859-1'
+	    "^self supportedEncodingNames includes: aString"
 	]
 ]
+
 
     decoderFor: aStream [
 	<category: 'conversion'>
@@ -42,14 +44,26 @@ GRCodec subclass: GRGSTIconvISO88591Codec [
 
     encoderFor: aStream [
 	<category: 'conversion'>
-	^(I18N.EncodedStream on: aStream readStream from: 'ISO-8859-1'
+	^(I18N.EncodedStream on: aStream from: 'ISO-8859-1'
 	    to: encoding)
+    ]
+
+
+    decode: aString [
+	<category: 'conversion'>
+	^(self decoderFor: aString readStream) contents asString
+    ]
+
+    encode: aString [
+	<category: 'conversion'>
+	^(self encoderFor: aString readStream) contents asString
     ]
 
     initializeWithEncoding: aString [
 	<category: 'initialization'>
 	self initialize.
-	encoding := aString
+	encoding := aString asLowercase.
+	urlCodec := self
     ]
 
     name [

@@ -5,10 +5,7 @@ TestCase subclass: GRUtf8CodecTest [
 
     asString: aCollectionOfIntegers [
 	<category: 'private'>
-	^String streamContents: 
-		[:stream | 
-		aCollectionOfIntegers 
-		    do: [:each | stream nextPut: (Character codePoint: each)]]
+	^aCollectionOfIntegers asByteArray asString
     ]
 
     seasideByteArray [
@@ -18,13 +15,12 @@ TestCase subclass: GRUtf8CodecTest [
 
     latin1String [
 	<category: 'accessing'>
-	^self asString: #(220 98 232 114 115 116 114 238 241 103 233)
+	^'Übèrstrîñgé'
     ]
 
     utf8String [
 	<category: 'accessing'>
-	^self 
-	    asString: #(195 156 98 195 168 114 115 116 114 195 174 195 177 103 195 169)
+	^'ÃbÃ¨rstrÃ®Ã±gÃ©'
     ]
 
     testCodecUtf8 [
