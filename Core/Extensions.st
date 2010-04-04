@@ -2,7 +2,7 @@ Object extend [
 
     greaseDeprecatedApi: apiString details: detailsString [
 	<category: '*Grease-Core'>
-	GRDeprecatedApiNotification new
+	Grease.GRDeprecatedApiNotification new
 	    details: detailsString;
 	    signal: apiString
     ]
@@ -77,7 +77,7 @@ String extend [
 
     pluralize [
 	<category: '*Grease-Core'>
-	^ GRInflector pluralize: self
+	^ Grease.GRInflector pluralize: self
     ]
 
     print: anObject on: aStream [
@@ -193,7 +193,7 @@ Integer extend [
 	<category: '*Grease-Core'>
 	^ self 
 	    pluralize: aSingularString
-	    with: (GRInflector pluralize: aSingularString)
+	    with: (Grease.GRInflector pluralize: aSingularString)
     ]
 
     pluralize: aSingularString with: aPluralString [
