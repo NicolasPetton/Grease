@@ -153,7 +153,7 @@ GRPlatform subclass: GRGSTPlatform [
 
     localNameOf: aFilename [
 	<category: 'file library'>
-	^File fullNameFor: aFilename
+	^File stripPathFrom: aFilename
     ]
 
     removeSelector: aSymbol from: aClass [
