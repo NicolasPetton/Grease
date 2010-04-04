@@ -46,7 +46,7 @@ Collection extend [
 ]
 
 Interval extend [
-    
+
 ]
 
 UndefinedObject extend [
@@ -213,12 +213,16 @@ String extend [
 
     sort [
 	<category: '*Grease-GST-Core'>
-	^self asArray sort asString
+	self sort: [:a :b | a <= b]
     ]
 
     sort: aBlock [
 	<category: '*Grease-GST-Core'>
-	^(self asArray sort: aBlock) asString
+	self
+	    replaceFrom: 1
+	    to: self size
+	    with: (self asSortedCollection: aBlock) asString
+	    startingAt: 1
     ]
 
     capitalized [
