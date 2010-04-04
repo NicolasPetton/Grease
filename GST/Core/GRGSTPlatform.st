@@ -88,7 +88,7 @@ GRPlatform subclass: GRGSTPlatform [
 	aByteArrayOrString as a ByteArray"
 
 	<category: 'file library'>
-	String streamContents: [ :stream |
+	^String streamContents: [ :stream |
 		stream nextPutAll: aSymbol; nextPutAll: ' [ '; nl.
 		stream tab; nextPutAll: '    ^#['.
 		aByteArrayOrString asByteArray
