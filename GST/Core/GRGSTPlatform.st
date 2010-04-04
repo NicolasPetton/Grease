@@ -147,8 +147,8 @@ GRPlatform subclass: GRGSTPlatform [
 	| directory |
 	directory := File name: aPathString.
 	^(directory files
-		reject: [ :each | each first = $. ])
-		collect: [ :each | each asString ]
+		reject: [:each | each name first = $.])
+		collect: [:each | each asString]
     ]
 
     localNameOf: aFilename [
