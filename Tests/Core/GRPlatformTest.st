@@ -13,9 +13,7 @@ TestCase subclass: GRPlatformTest [
 	<category: 'private'>
 	| codec toDecode decoded |
 	codec := GRCodec forEncoding: 'utf-8'.
-	toDecode := String streamContents: [:stream | 
-	    aCollectionOfIntegers do: [:each | 
-		stream nextPut: (Character codePoint: each)]].
+	toDecode := aCollectionOfIntegers asByteArray.
 	decoded := codec decode: toDecode.
 	self assert: decoded size = 1.
 	^decoded at: 1
