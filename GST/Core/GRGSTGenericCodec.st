@@ -30,7 +30,7 @@ GRCodec subclass: GRGSTGenericCodec [
 	    "Answer whether the the given encoding name is supported."
 
 	    <category: 'testing'>
-	    ^aString asLowercase ~= 'iso-8859-1'
+	    ^true
 	    "^self supportedEncodingNames includes: aString"
 	]
 ]
@@ -38,31 +38,33 @@ GRCodec subclass: GRGSTGenericCodec [
 
     decoderFor: aStream [
 	<category: 'conversion'>
-	^(I18N.EncodedStream on: aStream from: encoding
-	    to: 'ISO-8859-1')
+	^(I18N.EncodedStream unicodeOn: aStream encoding: encoding)
     ]
 
     encoderFor: aStream [
 	<category: 'conversion'>
-	^(I18N.EncodedStream on: aStream from: 'ISO-8859-1'
-	    to: encoding)
+        aStream species == ByteArray
+            ifTrue: [ ^self encoderFor: aStream contents asString ].
+        ^aStream species == UnicodeString
+	    ifTrue: [ I18N.EncodedStream encoding: aStream to: encoding ]
+	    ifFalse: [ I18N.EncodedStream on: aStream to: encoding ]
     ]
 
 
     decode: aString [
 	<category: 'conversion'>
-	^(self decoderFor: aString readStream) contents asString
+	^(self decoderFor: aString readStream) contents
     ]
 
     encode: aString [
 	<category: 'conversion'>
-	^(self encoderFor: aString readStream) contents asString
+	^(self encoderFor: aString readStream) contents
     ]
 
     initializeWithEncoding: aString [
 	<category: 'initialization'>
 	self initialize.
-	encoding := aString asLowercase.
+	encoding := aString.
 	urlCodec := self
     ]
 

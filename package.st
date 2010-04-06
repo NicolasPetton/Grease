@@ -44,7 +44,6 @@ Eval [
 
     filein: 'GST/Core/Extensions.st';
     filein: 'GST/Core/GRGSTGenericCodec.st';
-    filein: 'GST/Core/GRGSTLatin1Codec.st';
     filein: 'GST/Core/GRGSTPlatform.st';
     filein: 'GST/Core/GRGSTRandomProvider.st';
 

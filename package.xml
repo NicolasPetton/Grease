@@ -120,7 +120,6 @@
   <filein>Core/Utilities/GRInvalidArgumentCount.st</filein>
   <filein>GST/Core/Extensions.st</filein>
   <filein>GST/Core/GRGSTGenericCodec.st</filein>
-  <filein>GST/Core/GRGSTLatin1Codec.st</filein>
   <filein>GST/Core/GRGSTPlatform.st</filein>
   <filein>GST/Core/GRGSTRandomProvider.st</filein>
   <filein>Tests/Core/GRCodecTest.st</filein>
@@ -181,7 +180,6 @@
   <file>Core/Utilities/GRInvalidArgumentCount.st</file>
   <file>GST/Core/Extensions.st</file>
   <file>GST/Core/GRGSTGenericCodec.st</file>
-  <file>GST/Core/GRGSTLatin1Codec.st</file>
   <file>GST/Core/GRGSTPlatform.st</file>
   <file>GST/Core/GRGSTRandomProvider.st</file>
   <file>Tests/Core/GRCodecTest.st</file>
