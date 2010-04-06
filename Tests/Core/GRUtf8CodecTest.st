@@ -13,14 +13,15 @@ TestCase subclass: GRUtf8CodecTest [
 	^#(83 101 97 115 105 100 101) asByteArray	"Seaside"
     ]
 
-    latin1String [
-	<category: 'accessing'>
-	^'Übèrstrîñgé'
+    decodedString [
+        <category: 'accessing'>
+        ^'Übèrstrîñgé'
     ]
 
     utf8String [
 	<category: 'accessing'>
-	^'ÃbÃ¨rstrÃ®Ã±gÃ©'
+	^self asString:
+            #(195 156 98 195 168 114 115 116 114 195 174 195 177 103 195 169)
     ]
 
     testCodecUtf8 [
@@ -29,12 +30,12 @@ TestCase subclass: GRUtf8CodecTest [
 		[:codecName | 
 		| codec |
 		codec := GRCodec forEncoding: codecName.
-		self assert: codec name = 'utf-8'.
-		self assert: codec url name = 'utf-8'.
-		self assert: (codec encode: self latin1String) = self utf8String.
-		self assert: (codec url encode: self latin1String) = self utf8String.
-		self assert: (codec decode: self utf8String) = self latin1String.
-		self assert: (codec url decode: self utf8String) = self latin1String]
+		self assert: codec name = codecName.
+		self assert: codec url name = codecName.
+                self assert: (codec encode: self decodedString) asByteArray = self utf8String asByteArray.
+                self assert: (codec url encode: self decodedString) asByteArray = self utf8String asByteArray.
+                self assert: (codec decode: self utf8String) = self decodedString.
+                self assert: (codec url decode: self utf8String) = self decodedString]
     ]
 
     testCodecUtf8Binary [
@@ -57,8 +58,8 @@ TestCase subclass: GRUtf8CodecTest [
 		| codec bom |
 		codec := GRCodec forEncoding: codecName.
 		bom := self asString: #(239 187 191).
-		self assert: (codec decode: bom , self utf8String) = self latin1String.
-		self assert: (codec url decode: bom , self utf8String) = self latin1String]
+		self assert: (codec decode: bom , self utf8String) = self decodedString.
+		self assert: (codec url decode: bom , self utf8String) = self decodedString]
     ]
 
     testCodecUtf8ShortestForm [
