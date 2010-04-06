@@ -335,3 +335,40 @@ Duration extend [
     ]
 ]
 
+BlockClosure extend [
+    fixCallbackTemps [
+        <category: '*Grease-GST-Core'>
+        outerContext isNil ifTrue: [^self].
+        ^self shallowCopy outerContext: outerContext fixCallbackTemps; yourself
+    ]
+]
+
+BlockContext extend [
+    fixCallbackTemps [
+        <category: '*Grease-GST-Core'>
+        outerContext isNil ifTrue: [^self shallowCopy].
+        ^self shallowCopy outerContext: outerContext fixCallbackTemps; yourself
+    ]
+]
+
+ContextPart extend [
+    fixCallbackTemps [
+        <category: '*Grease-GST-Core'>
+        ^self shallowCopy
+    ]
+]
+
+DirectedMessage extend [
+    argumentCount [
+	"Answer the number of missing arguments to complete the number required
+         by the receiver's selector"
+
+	<category: '*Grease-GST-Core'>
+	^self selector numArgs - self arguments size
+    ]
+
+    fixCallbackTemps [
+        <category: '*Grease-GST-Core'>
+        ^self
+    ]
+]
