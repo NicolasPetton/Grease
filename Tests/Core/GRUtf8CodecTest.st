@@ -38,19 +38,6 @@ TestCase subclass: GRUtf8CodecTest [
                 self assert: (codec url decode: self utf8String) = self decodedString]
     ]
 
-    testCodecUtf8Binary [
-	<category: 'testing'>
-	#('UTF-8' 'utf-8') do: 
-		[:codecName | 
-		| codec binary encoder |
-		codec := GRCodec forEncoding: codecName.
-		binary := self utf8String asByteArray.
-		encoder := codec encoderFor: (WriteStream on: String new).
-		encoder binary.
-		encoder nextPutAll: binary.
-		self assert: encoder contents = binary asString]
-    ]
-
     testCodecUtf8Bom [
 	<category: 'testing'>
 	#('UTF-8' 'utf-8') do: 
