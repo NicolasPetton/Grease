@@ -69,7 +69,7 @@ GRCollectionTest subclass: GRStringTest [
 	self assert: #'CAPITALIZED' capitalized = #'CAPITALIZED'.
     ]
 
-    testCapitalizedUmlauts [
+    "testCapitalizedUmlauts [
 	<category: 'tests'>
 	self assert: 'äöü' capitalized = 'Äöü'.
 	self assert: 'Äöü' capitalized = 'Äöü'.
@@ -77,7 +77,7 @@ GRCollectionTest subclass: GRStringTest [
 	self assert: #'äöü' capitalized = #'Äöü'.
 	self assert: #'Äöü' capitalized = #'Äöü'.
 	self assert: #'ÄÖÜ' capitalized = #'ÄÖÜ'
-    ]
+    ]"
 
     testCopyAfter [
 	<category: 'tests'>
