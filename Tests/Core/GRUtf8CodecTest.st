@@ -71,7 +71,9 @@ TestCase subclass: GRUtf8CodecTest [
 		| codec abc |
 		codec := GRCodec forEncoding: codecName.
 		abc := self asString: #(193 129 193 130 193 131).
-		self assert: (codec decode: abc) ~= 'ABC']
+		[self
+                    should: [self assert: (codec decode: abc) ~= 'ABC']
+                    raise: Error]]
     ]
 
     testNext [
@@ -81,11 +83,6 @@ TestCase subclass: GRUtf8CodecTest [
 		    encoderFor: self seasideByteArray readStream.
 	self assert: stream next = $S.
 	self assert: (stream next: 1) = 'e'
-    ]
-
-    expectedFailures [
-	<category: '*grease-tests-gst-core'>
-	^#(#testCodecUtf8ShortestForm)
     ]
 ]
 
