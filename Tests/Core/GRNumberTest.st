@@ -56,7 +56,7 @@ TestCase subclass: GRNumberTest [
 
 	collection := OrderedCollection new.
 	(5 to: 4) do: [:ea | collection add: ea].
-	self assert: collection asArray = #(-3 -2).
+	self assert: collection asArray = #().
 
 	collection := OrderedCollection new.
 	(-3 to: -1.5) do: [:ea | collection add: ea].
