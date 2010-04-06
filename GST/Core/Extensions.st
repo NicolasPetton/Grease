@@ -129,11 +129,6 @@ Random extend [
 
 DirectedMessage extend [
 
-    value: firstArgument value: secondArgument [
-	<category: '*Grease-GST-Core'>
-	self valueWithArguments: (Array with: firstArgument with: secondArgument)
-    ]
-
     valueWithPossibleArguments: anArray [
 	<category: '*Grease-GST-Core'>
 	| arguments |
