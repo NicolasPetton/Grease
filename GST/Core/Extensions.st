@@ -239,7 +239,7 @@ Character extend [
 
     asUnicode [
 	<category: '*Grease-GST-Core'>
-	^(UnicodeCharacter codePoint: self codePoint) value
+	^self codePoint
     ]
 ]
 
@@ -279,13 +279,10 @@ Number extend [
 	<category: '*Grease-GST-Core'>
 	^Duration milliseconds: self
     ]
-]
-
-Integer extend [
 
     isZero [
 	<category: '*Grease-GST-Core'>
-	^self == 0
+	^self = 0
     ]
 ]
 
@@ -324,6 +321,21 @@ Collection extend [
     isCollection [
 	<category: '*Grease-GST-Core'>
 	^true
+    ]
+]
+
+Object extend [
+    printStringLimitedTo: anInteger [
+	"Answer a String representing the receiver, without making it longer
+         than anInteger characters"
+
+	<category: 'printing'>
+	| stream |
+	stream := WriteStream on: String new.
+	self printOn: stream.
+        ^stream position > anInteger
+            ifTrue: [ (stream copyFrom: 0 to: anInteger - 4), '...' ]
+            ifFalse: [ stream contents ]
     ]
 ]
 
