@@ -243,6 +243,14 @@ Character extend [
     ]
 ]
 
+CharacterArray extend [
+    
+    greaseString [
+	<category: '*Greasease-GST-Core'>
+	^self asString
+    ]
+]
+
 Number extend [
 
     isFraction [
