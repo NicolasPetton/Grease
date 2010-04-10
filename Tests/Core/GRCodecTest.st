@@ -3,14 +3,21 @@ TestCase subclass: GRCodecTest [
     <comment: nil>
     <category: 'Grease-Tests-Core'>
 
-    latin1String [
+    decodedString [
 	<category: 'accessing'>
 	^'Übèrstrîñgé'
     ]
 
+    latin1String [
+	<category: 'accessing'>
+	^self
+	    asString: #(220 98 232 114 115 116 114 238 241 103 233)
+    ]
+
     macromanString [
 	<category: 'accessing'>
-	^'brstrg'
+	^self
+            asString: #(134 98 143 114 115 116 114 148 150 103 142)
     ]
 
     utf16beString [
@@ -48,21 +55,10 @@ TestCase subclass: GRCodecTest [
 		codec := GRCodec forEncoding: each.
 		self assert: codec name = each.
 		self assert: codec url name = each.
-		self assert: (codec encode: self latin1String) = self latin1String.
-		self assert: (codec url encode: self latin1String) = self latin1String.
-		self assert: (codec decode: self latin1String) = self latin1String.
-		self assert: (codec url decode: self latin1String) = self latin1String]
-    ]
-
-    testCodecLatin1Binary [
-	<category: 'testing'>
-	| codec encoder binary |
-	codec := GRCodec forEncoding: 'ISO-8859-1'.
-	binary := self latin1String asByteArray.
-	encoder := codec encoderFor: (WriteStream on: String new).
-	encoder binary.
-	encoder nextPutAll: binary.
-	self assert: encoder contents = binary asString
+		self assert: (codec encode: self decodedString) asByteArray = self latin1String asByteArray.
+		self assert: (codec url encode: self decodedString) asByteArray = self latin1String asByteArray.
+		self assert: (codec decode: self latin1String) = self decodedString.
+		self assert: (codec url decode: self latin1String) = self decodedString]
     ]
 
     testNext [
