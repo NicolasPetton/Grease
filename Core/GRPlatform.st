@@ -213,6 +213,13 @@ GRObject subclass: GRPlatform [
 	self subclassResponsibility
     ]
 
+    newline [
+	"Answer the system's default newline character (sequence)."
+
+	<category: 'accessing'>
+	self subclsasResponsibility
+    ]
+
     doTransaction: aBlock [
 	"for Gemstone/S compatibility
 	 http://gemstonesoup.wordpress.com/2007/05/10/porting-application-specific-seaside-threads-to-gemstone/

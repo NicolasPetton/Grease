@@ -53,6 +53,14 @@ GRPlatform subclass: GRGSTPlatform [
 	]
     ]
 
+    newline [
+	"Answer the system's default newline character (sequence)."
+
+	<category: 'accessing'>
+        ^'
+'
+    ]
+
     addToShutDownList: anObject [
 	"Add anObject to the shutdown-list of the system. On shutdown the 
 	message #shutDown will be sent to anObject."
