@@ -55,8 +55,8 @@ TestCase subclass: GRCodecTest [
 		codec := GRCodec forEncoding: each.
 		self assert: codec name = each.
 		self assert: codec url name = each.
-		self assert: (codec encode: self decodedString) asByteArray = self latin1String asByteArray.
-		self assert: (codec url encode: self decodedString) asByteArray = self latin1String asByteArray.
+		self assert: (codec encode: self decodedString) = self latin1String.
+		self assert: (codec url encode: self decodedString) = self latin1String.
 		self assert: (codec decode: self latin1String) = self decodedString.
 		self assert: (codec url decode: self latin1String) = self decodedString]
     ]

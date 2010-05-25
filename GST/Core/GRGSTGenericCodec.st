@@ -58,7 +58,7 @@ GRCodec subclass: GRGSTGenericCodec [
 
     encode: aString [
 	<category: 'conversion'>
-	^(self encoderFor: aString readStream) contents
+	^(self encoderFor: aString readStream) contents asString
     ]
 
     initializeWithEncoding: aString [

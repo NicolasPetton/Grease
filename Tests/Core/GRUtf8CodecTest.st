@@ -32,8 +32,8 @@ TestCase subclass: GRUtf8CodecTest [
 		codec := GRCodec forEncoding: codecName.
 		self assert: codec name = codecName.
 		self assert: codec url name = codecName.
-                self assert: (codec encode: self decodedString) asByteArray = self utf8String asByteArray.
-                self assert: (codec url encode: self decodedString) asByteArray = self utf8String asByteArray.
+                self assert: (codec encode: self decodedString) = self utf8String.
+                self assert: (codec url encode: self decodedString) = self utf8String.
                 self assert: (codec decode: self utf8String) = self decodedString.
                 self assert: (codec url decode: self utf8String) = self decodedString]
     ]
